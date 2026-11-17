@@ -1,0 +1,1835 @@
+{
+  "summary": {
+    "demo": "E:\\Quake Bank\\Quake Demos\\2026\\11\\aitan(POV)-vs-railbird-toxicity-2026_11_10-12_17_35.dm_91",
+    "sha256": "02898cfa98e641f4e2c35b8e0b7c7d88b139addb2f40a1bb6be814eda7e1677c",
+    "map": "toxicity",
+    "player_names": {
+      "0": "railbird",
+      "1": "Şaitan",
+      "2": "Yalfy"
+    },
+    "deaths": 28,
+    "observed_respawns": 19,
+    "deaths_without_observed_respawn": 9,
+    "ranked": 8,
+    "unranked_observed": 11,
+    "ranks": {
+      "4": 5,
+      "1": 3
+    },
+    "all_in_pool": true,
+    "stable_rank_cases": 8,
+    "stable_pool_cases": 8,
+    "excluded_teleport_events": {
+      "outside_in_progress": 2,
+      "start_or_no_preceding_death": 1,
+      "teleporter_not_spawn_marker": 51
+    },
+    "snapshot_count": 28628,
+    "warnings": [],
+    "non_farthest_cases": 5
+  },
+  "respawns": [
+    {
+      "id": 1,
+      "map": "toxicity",
+      "time": 629100,
+      "game_seconds": 8.475,
+      "victim": "Şaitan",
+      "killer": "railbird",
+      "victim_client": 1,
+      "killer_client": 0,
+      "spawn": "R6",
+      "spawn_origin": [
+        96.0,
+        1904.0,
+        1112.0
+      ],
+      "event_position": [
+        96.0,
+        1904.0,
+        1121.0
+      ],
+      "marker_error": 0.0,
+      "death_time": 626975,
+      "respawn_delay_ms": 2125,
+      "K": 4,
+      "N": 8,
+      "status": "opponent_not_transmitted_alive"
+    },
+    {
+      "id": 2,
+      "map": "toxicity",
+      "time": 658525,
+      "game_seconds": 37.9,
+      "victim": "Şaitan",
+      "killer": "railbird",
+      "victim_client": 1,
+      "killer_client": 0,
+      "spawn": "R1",
+      "spawn_origin": [
+        -184.0,
+        1488.0,
+        1240.0
+      ],
+      "event_position": [
+        -184.0,
+        1488.0,
+        1249.0
+      ],
+      "marker_error": 0.0,
+      "death_time": 656425,
+      "respawn_delay_ms": 2100,
+      "K": 4,
+      "N": 8,
+      "status": "opponent_not_transmitted_alive"
+    },
+    {
+      "id": 3,
+      "map": "toxicity",
+      "time": 709275,
+      "game_seconds": 88.65,
+      "victim": "railbird",
+      "killer": "Şaitan",
+      "victim_client": 0,
+      "killer_client": 1,
+      "spawn": "R5",
+      "spawn_origin": [
+        -512.0,
+        1240.0,
+        1032.0
+      ],
+      "event_position": [
+        -512.0,
+        1240.0,
+        1041.0
+      ],
+      "marker_error": 0.0,
+      "death_time": 707175,
+      "respawn_delay_ms": 2100,
+      "K": 4,
+      "N": 8,
+      "status": "ranked",
+      "killer_position": [
+        -237.81614685058594,
+        2272.3671875,
+        1218.7176513671875
+      ],
+      "killer_source": "playerstate",
+      "chosen_rank": 4,
+      "chosen_distance": 1032.367,
+      "farthest_distance": 1344.367,
+      "pool": [
+        "R4",
+        "R3",
+        "R7",
+        "R5"
+      ],
+      "in_pool": true,
+      "rankings": [
+        {
+          "spawn": "R4",
+          "distance": 1344.367
+        },
+        {
+          "spawn": "R3",
+          "distance": 1106.184
+        },
+        {
+          "spawn": "R7",
+          "distance": 1074.184
+        },
+        {
+          "spawn": "R5",
+          "distance": 1032.367
+        },
+        {
+          "spawn": "R1",
+          "distance": 784.367
+        },
+        {
+          "spawn": "R8",
+          "distance": 738.184
+        },
+        {
+          "spawn": "R6",
+          "distance": 368.367
+        },
+        {
+          "spawn": "R2",
+          "distance": 317.816
+        }
+      ],
+      "neighbours": [
+        {
+          "phase": "previous",
+          "dt": -25,
+          "rank": 4,
+          "pool": [
+            "R4",
+            "R3",
+            "R7",
+            "R5"
+          ],
+          "position": [
+            -250.1735382080078,
+            2270.4736328125,
+            1221.1365966796875
+          ]
+        },
+        {
+          "phase": "next",
+          "dt": 25,
+          "rank": 4,
+          "pool": [
+            "R4",
+            "R3",
+            "R7",
+            "R5"
+          ],
+          "position": [
+            -224.826171875,
+            2274.174560546875,
+            1215.67138671875
+          ]
+        }
+      ],
+      "rank_stable_neighbours": true,
+      "pool_stable_neighbours": true,
+      "preceding_300ms": [
+        {
+          "dt": -300,
+          "rank": 2,
+          "in_pool": true
+        },
+        {
+          "dt": -275,
+          "rank": 2,
+          "in_pool": true
+        },
+        {
+          "dt": -250,
+          "rank": 2,
+          "in_pool": true
+        },
+        {
+          "dt": -225,
+          "rank": 2,
+          "in_pool": true
+        },
+        {
+          "dt": -200,
+          "rank": 2,
+          "in_pool": true
+        },
+        {
+          "dt": -175,
+          "rank": 3,
+          "in_pool": true
+        },
+        {
+          "dt": -150,
+          "rank": 3,
+          "in_pool": true
+        },
+        {
+          "dt": -125,
+          "rank": 3,
+          "in_pool": true
+        },
+        {
+          "dt": -100,
+          "rank": 4,
+          "in_pool": true
+        },
+        {
+          "dt": -75,
+          "rank": 4,
+          "in_pool": true
+        },
+        {
+          "dt": -50,
+          "rank": 4,
+          "in_pool": true
+        },
+        {
+          "dt": -25,
+          "rank": 4,
+          "in_pool": true
+        }
+      ],
+      "killer_position_at_death": [
+        -726.7284545898438,
+        1861.32421875,
+        1064.125
+      ],
+      "rank_from_death_position": 4,
+      "pool_from_death_position": [
+        "R4",
+        "R6",
+        "R2",
+        "R5"
+      ],
+      "killer_movement_since_frag": 657.2
+    },
+    {
+      "id": 4,
+      "map": "toxicity",
+      "time": 784325,
+      "game_seconds": 163.7,
+      "victim": "Şaitan",
+      "killer": "railbird",
+      "victim_client": 1,
+      "killer_client": 0,
+      "spawn": "R7",
+      "spawn_origin": [
+        -1312.0,
+        2072.0,
+        1000.0
+      ],
+      "event_position": [
+        -1312.0,
+        2072.0,
+        1009.0
+      ],
+      "marker_error": 0.0,
+      "death_time": 782200,
+      "respawn_delay_ms": 2125,
+      "K": 4,
+      "N": 8,
+      "status": "opponent_not_transmitted_alive"
+    },
+    {
+      "id": 5,
+      "map": "toxicity",
+      "time": 799825,
+      "game_seconds": 179.2,
+      "victim": "railbird",
+      "killer": "Şaitan",
+      "victim_client": 0,
+      "killer_client": 1,
+      "spawn": "R5",
+      "spawn_origin": [
+        -512.0,
+        1240.0,
+        1032.0
+      ],
+      "event_position": [
+        -512.0,
+        1240.0,
+        1041.0
+      ],
+      "marker_error": 0.0,
+      "death_time": 797700,
+      "respawn_delay_ms": 2125,
+      "K": 4,
+      "N": 8,
+      "status": "ranked",
+      "killer_position": [
+        -53.77737808227539,
+        2214.6474609375,
+        1210.1517333984375
+      ],
+      "killer_source": "playerstate",
+      "chosen_rank": 4,
+      "chosen_distance": 974.647,
+      "farthest_distance": 1290.223,
+      "pool": [
+        "R3",
+        "R4",
+        "R7",
+        "R5"
+      ],
+      "in_pool": true,
+      "rankings": [
+        {
+          "spawn": "R3",
+          "distance": 1290.223
+        },
+        {
+          "spawn": "R4",
+          "distance": 1286.647
+        },
+        {
+          "spawn": "R7",
+          "distance": 1258.223
+        },
+        {
+          "spawn": "R5",
+          "distance": 974.647
+        },
+        {
+          "spawn": "R8",
+          "distance": 922.223
+        },
+        {
+          "spawn": "R1",
+          "distance": 726.647
+        },
+        {
+          "spawn": "R6",
+          "distance": 310.647
+        },
+        {
+          "spawn": "R2",
+          "distance": 133.777
+        }
+      ],
+      "neighbours": [
+        {
+          "phase": "previous",
+          "dt": -25,
+          "rank": 4,
+          "pool": [
+            "R3",
+            "R4",
+            "R7",
+            "R5"
+          ],
+          "position": [
+            -52.654624938964844,
+            2209.72900390625,
+            1212.514404296875
+          ]
+        },
+        {
+          "phase": "next",
+          "dt": 25,
+          "rank": 4,
+          "pool": [
+            "R4",
+            "R3",
+            "R7",
+            "R5"
+          ],
+          "position": [
+            -55.34455490112305,
+            2220.27978515625,
+            1208.125
+          ]
+        }
+      ],
+      "rank_stable_neighbours": true,
+      "pool_stable_neighbours": true,
+      "preceding_300ms": [
+        {
+          "dt": -300,
+          "rank": 5,
+          "in_pool": false
+        },
+        {
+          "dt": -275,
+          "rank": 5,
+          "in_pool": false
+        },
+        {
+          "dt": -250,
+          "rank": 5,
+          "in_pool": false
+        },
+        {
+          "dt": -225,
+          "rank": 5,
+          "in_pool": false
+        },
+        {
+          "dt": -200,
+          "rank": 4,
+          "in_pool": true
+        },
+        {
+          "dt": -175,
+          "rank": 4,
+          "in_pool": true
+        },
+        {
+          "dt": -150,
+          "rank": 4,
+          "in_pool": true
+        },
+        {
+          "dt": -125,
+          "rank": 4,
+          "in_pool": true
+        },
+        {
+          "dt": -100,
+          "rank": 4,
+          "in_pool": true
+        },
+        {
+          "dt": -75,
+          "rank": 4,
+          "in_pool": true
+        },
+        {
+          "dt": -50,
+          "rank": 4,
+          "in_pool": true
+        },
+        {
+          "dt": -25,
+          "rank": 4,
+          "in_pool": true
+        }
+      ],
+      "killer_position_at_death": [
+        93.68409729003906,
+        2047.7764892578125,
+        1112.2347412109375
+      ],
+      "rank_from_death_position": 5,
+      "pool_from_death_position": [
+        "R3",
+        "R7",
+        "R4",
+        "R8"
+      ],
+      "killer_movement_since_frag": 243.3
+    },
+    {
+      "id": 6,
+      "map": "toxicity",
+      "time": 841975,
+      "game_seconds": 221.35,
+      "victim": "railbird",
+      "killer": "Şaitan",
+      "victim_client": 0,
+      "killer_client": 1,
+      "spawn": "R4",
+      "spawn_origin": [
+        -192.0,
+        928.0,
+        1208.0
+      ],
+      "event_position": [
+        -192.0,
+        928.0,
+        1217.0
+      ],
+      "marker_error": 0.0,
+      "death_time": 839875,
+      "respawn_delay_ms": 2100,
+      "K": 4,
+      "N": 8,
+      "status": "ranked",
+      "killer_position": [
+        -1141.2847900390625,
+        1487.6573486328125,
+        1112.125
+      ],
+      "killer_source": "playerstate",
+      "chosen_rank": 4,
+      "chosen_distance": 949.285,
+      "farthest_distance": 1237.285,
+      "pool": [
+        "R6",
+        "R2",
+        "R1",
+        "R4"
+      ],
+      "in_pool": true,
+      "rankings": [
+        {
+          "spawn": "R6",
+          "distance": 1237.285
+        },
+        {
+          "spawn": "R2",
+          "distance": 1221.285
+        },
+        {
+          "spawn": "R1",
+          "distance": 957.285
+        },
+        {
+          "spawn": "R4",
+          "distance": 949.285
+        },
+        {
+          "spawn": "R5",
+          "distance": 629.285
+        },
+        {
+          "spawn": "R7",
+          "distance": 584.343
+        },
+        {
+          "spawn": "R8",
+          "distance": 288.343
+        },
+        {
+          "spawn": "R3",
+          "distance": 202.715
+        }
+      ],
+      "neighbours": [
+        {
+          "phase": "previous",
+          "dt": -25,
+          "rank": 4,
+          "pool": [
+            "R6",
+            "R2",
+            "R1",
+            "R4"
+          ],
+          "position": [
+            -1149.24609375,
+            1488.513671875,
+            1112.125
+          ]
+        },
+        {
+          "phase": "next",
+          "dt": 25,
+          "rank": 4,
+          "pool": [
+            "R6",
+            "R2",
+            "R1",
+            "R4"
+          ],
+          "position": [
+            -1134.2855224609375,
+            1486.86572265625,
+            1112.125
+          ]
+        }
+      ],
+      "rank_stable_neighbours": true,
+      "pool_stable_neighbours": true,
+      "preceding_300ms": [
+        {
+          "dt": -300,
+          "rank": 4,
+          "in_pool": true
+        },
+        {
+          "dt": -275,
+          "rank": 4,
+          "in_pool": true
+        },
+        {
+          "dt": -250,
+          "rank": 4,
+          "in_pool": true
+        },
+        {
+          "dt": -225,
+          "rank": 4,
+          "in_pool": true
+        },
+        {
+          "dt": -200,
+          "rank": 4,
+          "in_pool": true
+        },
+        {
+          "dt": -175,
+          "rank": 4,
+          "in_pool": true
+        },
+        {
+          "dt": -150,
+          "rank": 4,
+          "in_pool": true
+        },
+        {
+          "dt": -125,
+          "rank": 4,
+          "in_pool": true
+        },
+        {
+          "dt": -100,
+          "rank": 4,
+          "in_pool": true
+        },
+        {
+          "dt": -75,
+          "rank": 4,
+          "in_pool": true
+        },
+        {
+          "dt": -50,
+          "rank": 4,
+          "in_pool": true
+        },
+        {
+          "dt": -25,
+          "rank": 4,
+          "in_pool": true
+        }
+      ],
+      "killer_position_at_death": [
+        -1398.260009765625,
+        2052.9775390625,
+        1176.241455078125
+      ],
+      "rank_from_death_position": 4,
+      "pool_from_death_position": [
+        "R6",
+        "R2",
+        "R1",
+        "R4"
+      ],
+      "killer_movement_since_frag": 624.3
+    },
+    {
+      "id": 7,
+      "map": "toxicity",
+      "time": 848150,
+      "game_seconds": 227.525,
+      "victim": "railbird",
+      "killer": "Şaitan",
+      "victim_client": 0,
+      "killer_client": 1,
+      "spawn": "R1",
+      "spawn_origin": [
+        -184.0,
+        1488.0,
+        1240.0
+      ],
+      "event_position": [
+        -184.0,
+        1488.0,
+        1249.0
+      ],
+      "marker_error": 0.0,
+      "death_time": 846050,
+      "respawn_delay_ms": 2100,
+      "K": 4,
+      "N": 8,
+      "status": "ranked",
+      "killer_position": [
+        -1075.28515625,
+        1858.30419921875,
+        1047.298828125
+      ],
+      "killer_source": "playerstate",
+      "chosen_rank": 4,
+      "chosen_distance": 891.285,
+      "farthest_distance": 1171.285,
+      "pool": [
+        "R6",
+        "R2",
+        "R4",
+        "R1"
+      ],
+      "in_pool": true,
+      "rankings": [
+        {
+          "spawn": "R6",
+          "distance": 1171.285
+        },
+        {
+          "spawn": "R2",
+          "distance": 1155.285
+        },
+        {
+          "spawn": "R4",
+          "distance": 930.304
+        },
+        {
+          "spawn": "R1",
+          "distance": 891.285
+        },
+        {
+          "spawn": "R5",
+          "distance": 618.304
+        },
+        {
+          "spawn": "R3",
+          "distance": 450.304
+        },
+        {
+          "spawn": "R7",
+          "distance": 236.715
+        },
+        {
+          "spawn": "R8",
+          "distance": 192.701
+        }
+      ],
+      "neighbours": [
+        {
+          "phase": "previous",
+          "dt": -25,
+          "rank": 4,
+          "pool": [
+            "R6",
+            "R2",
+            "R4",
+            "R1"
+          ],
+          "position": [
+            -1074.7091064453125,
+            1868.1158447265625,
+            1048.024658203125
+          ]
+        },
+        {
+          "phase": "next",
+          "dt": 25,
+          "rank": 4,
+          "pool": [
+            "R6",
+            "R2",
+            "R4",
+            "R1"
+          ],
+          "position": [
+            -1075.9898681640625,
+            1847.109619140625,
+            1046.0037841796875
+          ]
+        }
+      ],
+      "rank_stable_neighbours": true,
+      "pool_stable_neighbours": true,
+      "preceding_300ms": [
+        {
+          "dt": -300,
+          "rank": 4,
+          "in_pool": true
+        },
+        {
+          "dt": -275,
+          "rank": 4,
+          "in_pool": true
+        },
+        {
+          "dt": -250,
+          "rank": 4,
+          "in_pool": true
+        },
+        {
+          "dt": -225,
+          "rank": 4,
+          "in_pool": true
+        },
+        {
+          "dt": -200,
+          "rank": 4,
+          "in_pool": true
+        },
+        {
+          "dt": -175,
+          "rank": 4,
+          "in_pool": true
+        },
+        {
+          "dt": -150,
+          "rank": 4,
+          "in_pool": true
+        },
+        {
+          "dt": -125,
+          "rank": 4,
+          "in_pool": true
+        },
+        {
+          "dt": -100,
+          "rank": 4,
+          "in_pool": true
+        },
+        {
+          "dt": -75,
+          "rank": 4,
+          "in_pool": true
+        },
+        {
+          "dt": -50,
+          "rank": 4,
+          "in_pool": true
+        },
+        {
+          "dt": -25,
+          "rank": 4,
+          "in_pool": true
+        }
+      ],
+      "killer_position_at_death": [
+        -1156.0570068359375,
+        2265.362060546875,
+        1094.2574462890625
+      ],
+      "rank_from_death_position": 5,
+      "pool_from_death_position": [
+        "R4",
+        "R6",
+        "R2",
+        "R5"
+      ],
+      "killer_movement_since_frag": 417.6
+    },
+    {
+      "id": 8,
+      "map": "toxicity",
+      "time": 878000,
+      "game_seconds": 257.375,
+      "victim": "Şaitan",
+      "killer": "railbird",
+      "victim_client": 1,
+      "killer_client": 0,
+      "spawn": "R6",
+      "spawn_origin": [
+        96.0,
+        1904.0,
+        1112.0
+      ],
+      "event_position": [
+        96.0,
+        1904.0,
+        1121.0
+      ],
+      "marker_error": 0.0,
+      "death_time": 875875,
+      "respawn_delay_ms": 2125,
+      "K": 4,
+      "N": 8,
+      "status": "opponent_not_transmitted_alive"
+    },
+    {
+      "id": 9,
+      "map": "toxicity",
+      "time": 908525,
+      "game_seconds": 287.9,
+      "victim": "Şaitan",
+      "killer": "railbird",
+      "victim_client": 1,
+      "killer_client": 0,
+      "spawn": "R2",
+      "spawn_origin": [
+        80.0,
+        2256.0,
+        1208.0
+      ],
+      "event_position": [
+        80.0,
+        2256.0,
+        1217.0
+      ],
+      "marker_error": 0.0,
+      "death_time": 906425,
+      "respawn_delay_ms": 2100,
+      "K": 4,
+      "N": 8,
+      "status": "opponent_not_transmitted_alive"
+    },
+    {
+      "id": 10,
+      "map": "toxicity",
+      "time": 967475,
+      "game_seconds": 346.85,
+      "victim": "Şaitan",
+      "killer": "railbird",
+      "victim_client": 1,
+      "killer_client": 0,
+      "spawn": "R7",
+      "spawn_origin": [
+        -1312.0,
+        2072.0,
+        1000.0
+      ],
+      "event_position": [
+        -1312.0,
+        2072.0,
+        1009.0
+      ],
+      "marker_error": 0.0,
+      "death_time": 965350,
+      "respawn_delay_ms": 2125,
+      "K": 4,
+      "N": 8,
+      "status": "opponent_not_transmitted_alive"
+    },
+    {
+      "id": 11,
+      "map": "toxicity",
+      "time": 1012750,
+      "game_seconds": 392.125,
+      "victim": "Şaitan",
+      "killer": "railbird",
+      "victim_client": 1,
+      "killer_client": 0,
+      "spawn": "R3",
+      "spawn_origin": [
+        -1344.0,
+        1408.0,
+        1112.0
+      ],
+      "event_position": [
+        -1344.0,
+        1408.0,
+        1121.0
+      ],
+      "marker_error": 0.0,
+      "death_time": 1010625,
+      "respawn_delay_ms": 2125,
+      "K": 4,
+      "N": 8,
+      "status": "opponent_not_transmitted_alive"
+    },
+    {
+      "id": 12,
+      "map": "toxicity",
+      "time": 1096800,
+      "game_seconds": 476.175,
+      "victim": "Şaitan",
+      "killer": "railbird",
+      "victim_client": 1,
+      "killer_client": 0,
+      "spawn": "R1",
+      "spawn_origin": [
+        -184.0,
+        1488.0,
+        1240.0
+      ],
+      "event_position": [
+        -184.0,
+        1488.0,
+        1249.0
+      ],
+      "marker_error": 0.0,
+      "death_time": 1094700,
+      "respawn_delay_ms": 2100,
+      "K": 4,
+      "N": 8,
+      "status": "opponent_not_transmitted_alive"
+    },
+    {
+      "id": 13,
+      "map": "toxicity",
+      "time": 1139050,
+      "game_seconds": 518.425,
+      "victim": "Şaitan",
+      "killer": "railbird",
+      "victim_client": 1,
+      "killer_client": 0,
+      "spawn": "R6",
+      "spawn_origin": [
+        96.0,
+        1904.0,
+        1112.0
+      ],
+      "event_position": [
+        96.0,
+        1904.0,
+        1121.0
+      ],
+      "marker_error": 0.0,
+      "death_time": 1136925,
+      "respawn_delay_ms": 2125,
+      "K": 4,
+      "N": 8,
+      "status": "ranked",
+      "killer_position": [
+        -691.76171875,
+        1691.268798828125,
+        1240.125
+      ],
+      "killer_source": "entity",
+      "chosen_rank": 1,
+      "chosen_distance": 787.762,
+      "farthest_distance": 787.762,
+      "pool": [
+        "R6",
+        "R2",
+        "R4",
+        "R3"
+      ],
+      "in_pool": true,
+      "rankings": [
+        {
+          "spawn": "R6",
+          "distance": 787.762
+        },
+        {
+          "spawn": "R2",
+          "distance": 771.762
+        },
+        {
+          "spawn": "R4",
+          "distance": 763.269
+        },
+        {
+          "spawn": "R3",
+          "distance": 652.238
+        },
+        {
+          "spawn": "R7",
+          "distance": 620.238
+        },
+        {
+          "spawn": "R1",
+          "distance": 507.762
+        },
+        {
+          "spawn": "R5",
+          "distance": 451.269
+        },
+        {
+          "spawn": "R8",
+          "distance": 284.238
+        }
+      ],
+      "neighbours": [
+        {
+          "phase": "previous",
+          "dt": -25,
+          "rank": 1,
+          "pool": [
+            "R6",
+            "R2",
+            "R4",
+            "R3"
+          ],
+          "position": [
+            -693.2186279296875,
+            1699.584228515625,
+            1240.125
+          ]
+        },
+        {
+          "phase": "next",
+          "dt": 25,
+          "rank": 1,
+          "pool": [
+            "R6",
+            "R2",
+            "R4",
+            "R3"
+          ],
+          "position": [
+            -690.7147216796875,
+            1682.9256591796875,
+            1240.125
+          ]
+        }
+      ],
+      "rank_stable_neighbours": true,
+      "pool_stable_neighbours": true,
+      "preceding_300ms": [
+        {
+          "dt": -300,
+          "rank": 2,
+          "in_pool": true
+        },
+        {
+          "dt": -275,
+          "rank": 2,
+          "in_pool": true
+        },
+        {
+          "dt": -250,
+          "rank": 2,
+          "in_pool": true
+        },
+        {
+          "dt": -225,
+          "rank": 2,
+          "in_pool": true
+        },
+        {
+          "dt": -200,
+          "rank": 2,
+          "in_pool": true
+        },
+        {
+          "dt": -175,
+          "rank": 2,
+          "in_pool": true
+        },
+        {
+          "dt": -150,
+          "rank": 2,
+          "in_pool": true
+        },
+        {
+          "dt": -125,
+          "rank": 2,
+          "in_pool": true
+        },
+        {
+          "dt": -100,
+          "rank": 2,
+          "in_pool": true
+        },
+        {
+          "dt": -75,
+          "rank": 1,
+          "in_pool": true
+        },
+        {
+          "dt": -50,
+          "rank": 1,
+          "in_pool": true
+        },
+        {
+          "dt": -25,
+          "rank": 1,
+          "in_pool": true
+        }
+      ],
+      "killer_position_at_death": [
+        -953.7041625976562,
+        1842.799560546875,
+        1248.330078125
+      ],
+      "rank_from_death_position": 1,
+      "pool_from_death_position": [
+        "R6",
+        "R2",
+        "R4",
+        "R1"
+      ],
+      "killer_movement_since_frag": 302.7
+    },
+    {
+      "id": 14,
+      "map": "toxicity",
+      "time": 1173075,
+      "game_seconds": 552.45,
+      "victim": "Şaitan",
+      "killer": "railbird",
+      "victim_client": 1,
+      "killer_client": 0,
+      "spawn": "R8",
+      "spawn_origin": [
+        -976.0,
+        1776.0,
+        1240.0
+      ],
+      "event_position": [
+        -976.0,
+        1776.0,
+        1249.0
+      ],
+      "marker_error": 0.0,
+      "death_time": 1170975,
+      "respawn_delay_ms": 2100,
+      "K": 4,
+      "N": 8,
+      "status": "opponent_not_transmitted_alive"
+    },
+    {
+      "id": 15,
+      "map": "toxicity",
+      "time": 1255950,
+      "game_seconds": 635.325,
+      "victim": "railbird",
+      "killer": "Şaitan",
+      "victim_client": 0,
+      "killer_client": 1,
+      "spawn": "R6",
+      "spawn_origin": [
+        96.0,
+        1904.0,
+        1112.0
+      ],
+      "event_position": [
+        96.0,
+        1904.0,
+        1121.0
+      ],
+      "marker_error": 0.0,
+      "death_time": 1253825,
+      "respawn_delay_ms": 2125,
+      "K": 4,
+      "N": 8,
+      "status": "ranked",
+      "killer_position": [
+        -1020.0379028320312,
+        1467.505615234375,
+        1112.125
+      ],
+      "killer_source": "playerstate",
+      "chosen_rank": 1,
+      "chosen_distance": 1116.038,
+      "farthest_distance": 1116.038,
+      "pool": [
+        "R6",
+        "R2",
+        "R1",
+        "R4"
+      ],
+      "in_pool": true,
+      "rankings": [
+        {
+          "spawn": "R6",
+          "distance": 1116.038
+        },
+        {
+          "spawn": "R2",
+          "distance": 1100.038
+        },
+        {
+          "spawn": "R1",
+          "distance": 836.038
+        },
+        {
+          "spawn": "R4",
+          "distance": 828.038
+        },
+        {
+          "spawn": "R7",
+          "distance": 604.494
+        },
+        {
+          "spawn": "R5",
+          "distance": 508.038
+        },
+        {
+          "spawn": "R3",
+          "distance": 323.962
+        },
+        {
+          "spawn": "R8",
+          "distance": 308.494
+        }
+      ],
+      "neighbours": [
+        {
+          "phase": "previous",
+          "dt": -25,
+          "rank": 1,
+          "pool": [
+            "R6",
+            "R2",
+            "R1",
+            "R4"
+          ],
+          "position": [
+            -1022.5153198242188,
+            1459.075439453125,
+            1112.125
+          ]
+        },
+        {
+          "phase": "next",
+          "dt": 25,
+          "rank": 1,
+          "pool": [
+            "R6",
+            "R2",
+            "R1",
+            "R4"
+          ],
+          "position": [
+            -1017.5154418945312,
+            1475.8604736328125,
+            1112.125
+          ]
+        }
+      ],
+      "rank_stable_neighbours": true,
+      "pool_stable_neighbours": true,
+      "preceding_300ms": [
+        {
+          "dt": -300,
+          "rank": 1,
+          "in_pool": true
+        },
+        {
+          "dt": -275,
+          "rank": 1,
+          "in_pool": true
+        },
+        {
+          "dt": -250,
+          "rank": 1,
+          "in_pool": true
+        },
+        {
+          "dt": -225,
+          "rank": 1,
+          "in_pool": true
+        },
+        {
+          "dt": -200,
+          "rank": 1,
+          "in_pool": true
+        },
+        {
+          "dt": -175,
+          "rank": 1,
+          "in_pool": true
+        },
+        {
+          "dt": -150,
+          "rank": 1,
+          "in_pool": true
+        },
+        {
+          "dt": -125,
+          "rank": 1,
+          "in_pool": true
+        },
+        {
+          "dt": -100,
+          "rank": 1,
+          "in_pool": true
+        },
+        {
+          "dt": -75,
+          "rank": 1,
+          "in_pool": true
+        },
+        {
+          "dt": -50,
+          "rank": 1,
+          "in_pool": true
+        },
+        {
+          "dt": -25,
+          "rank": 1,
+          "in_pool": true
+        }
+      ],
+      "killer_position_at_death": [
+        -1095.5482177734375,
+        1146.8504638671875,
+        1176.3680419921875
+      ],
+      "rank_from_death_position": 1,
+      "pool_from_death_position": [
+        "R6",
+        "R2",
+        "R7",
+        "R1"
+      ],
+      "killer_movement_since_frag": 335.6
+    },
+    {
+      "id": 16,
+      "map": "toxicity",
+      "time": 1267150,
+      "game_seconds": 646.525,
+      "victim": "railbird",
+      "killer": "Şaitan",
+      "victim_client": 0,
+      "killer_client": 1,
+      "spawn": "R4",
+      "spawn_origin": [
+        -192.0,
+        928.0,
+        1208.0
+      ],
+      "event_position": [
+        -192.0,
+        928.0,
+        1217.0
+      ],
+      "marker_error": 0.0,
+      "death_time": 1265025,
+      "respawn_delay_ms": 2125,
+      "K": 4,
+      "N": 8,
+      "status": "ranked",
+      "killer_position": [
+        112.875,
+        1847.47314453125,
+        1102.6922607421875
+      ],
+      "killer_source": "playerstate",
+      "chosen_rank": 4,
+      "chosen_distance": 919.473,
+      "farthest_distance": 1456.875,
+      "pool": [
+        "R3",
+        "R7",
+        "R8",
+        "R4"
+      ],
+      "in_pool": true,
+      "rankings": [
+        {
+          "spawn": "R3",
+          "distance": 1456.875
+        },
+        {
+          "spawn": "R7",
+          "distance": 1424.875
+        },
+        {
+          "spawn": "R8",
+          "distance": 1088.875
+        },
+        {
+          "spawn": "R4",
+          "distance": 919.473
+        },
+        {
+          "spawn": "R5",
+          "distance": 624.875
+        },
+        {
+          "spawn": "R2",
+          "distance": 408.527
+        },
+        {
+          "spawn": "R1",
+          "distance": 359.473
+        },
+        {
+          "spawn": "R6",
+          "distance": 56.527
+        }
+      ],
+      "neighbours": [
+        {
+          "phase": "previous",
+          "dt": -25,
+          "rank": 4,
+          "pool": [
+            "R3",
+            "R7",
+            "R8",
+            "R4"
+          ],
+          "position": [
+            112.875,
+            1847.4505615234375,
+            1106.4737548828125
+          ]
+        },
+        {
+          "phase": "next",
+          "dt": 25,
+          "rank": 4,
+          "pool": [
+            "R3",
+            "R7",
+            "R8",
+            "R4"
+          ],
+          "position": [
+            112.86566162109375,
+            1847.333984375,
+            1098.591552734375
+          ]
+        }
+      ],
+      "rank_stable_neighbours": true,
+      "pool_stable_neighbours": true,
+      "preceding_300ms": [
+        {
+          "dt": -300,
+          "rank": 4,
+          "in_pool": true
+        },
+        {
+          "dt": -275,
+          "rank": 4,
+          "in_pool": true
+        },
+        {
+          "dt": -250,
+          "rank": 4,
+          "in_pool": true
+        },
+        {
+          "dt": -225,
+          "rank": 4,
+          "in_pool": true
+        },
+        {
+          "dt": -200,
+          "rank": 4,
+          "in_pool": true
+        },
+        {
+          "dt": -175,
+          "rank": 4,
+          "in_pool": true
+        },
+        {
+          "dt": -150,
+          "rank": 4,
+          "in_pool": true
+        },
+        {
+          "dt": -125,
+          "rank": 4,
+          "in_pool": true
+        },
+        {
+          "dt": -100,
+          "rank": 4,
+          "in_pool": true
+        },
+        {
+          "dt": -75,
+          "rank": 4,
+          "in_pool": true
+        },
+        {
+          "dt": -50,
+          "rank": 4,
+          "in_pool": true
+        },
+        {
+          "dt": -25,
+          "rank": 4,
+          "in_pool": true
+        }
+      ],
+      "killer_position_at_death": [
+        112.3448715209961,
+        2073.386474609375,
+        1112.125
+      ],
+      "rank_from_death_position": 3,
+      "pool_from_death_position": [
+        "R3",
+        "R7",
+        "R4",
+        "R8"
+      ],
+      "killer_movement_since_frag": 226.1
+    },
+    {
+      "id": 17,
+      "map": "toxicity",
+      "time": 1282000,
+      "game_seconds": 661.375,
+      "victim": "Şaitan",
+      "killer": "railbird",
+      "victim_client": 1,
+      "killer_client": 0,
+      "spawn": "R1",
+      "spawn_origin": [
+        -184.0,
+        1488.0,
+        1240.0
+      ],
+      "event_position": [
+        -184.0,
+        1488.0,
+        1249.0
+      ],
+      "marker_error": 0.0,
+      "death_time": 1279875,
+      "respawn_delay_ms": 2125,
+      "K": 4,
+      "N": 8,
+      "status": "opponent_not_transmitted_alive"
+    },
+    {
+      "id": 18,
+      "map": "toxicity",
+      "time": 1291425,
+      "game_seconds": 670.8,
+      "victim": "railbird",
+      "killer": "Şaitan",
+      "victim_client": 0,
+      "killer_client": 1,
+      "spawn": "R3",
+      "spawn_origin": [
+        -1344.0,
+        1408.0,
+        1112.0
+      ],
+      "event_position": [
+        -1344.0,
+        1408.0,
+        1121.0
+      ],
+      "marker_error": 0.0,
+      "death_time": 1289300,
+      "respawn_delay_ms": 2125,
+      "K": 4,
+      "N": 8,
+      "status": "ranked",
+      "killer_position": [
+        -30.1569881439209,
+        1971.1109619140625,
+        1120.3658447265625
+      ],
+      "killer_source": "playerstate",
+      "chosen_rank": 1,
+      "chosen_distance": 1313.843,
+      "farthest_distance": 1313.843,
+      "pool": [
+        "R3",
+        "R7",
+        "R4",
+        "R8"
+      ],
+      "in_pool": true,
+      "rankings": [
+        {
+          "spawn": "R3",
+          "distance": 1313.843
+        },
+        {
+          "spawn": "R7",
+          "distance": 1281.843
+        },
+        {
+          "spawn": "R4",
+          "distance": 1043.111
+        },
+        {
+          "spawn": "R8",
+          "distance": 945.843
+        },
+        {
+          "spawn": "R5",
+          "distance": 731.111
+        },
+        {
+          "spawn": "R1",
+          "distance": 483.111
+        },
+        {
+          "spawn": "R2",
+          "distance": 284.889
+        },
+        {
+          "spawn": "R6",
+          "distance": 126.157
+        }
+      ],
+      "neighbours": [
+        {
+          "phase": "previous",
+          "dt": -25,
+          "rank": 1,
+          "pool": [
+            "R3",
+            "R7",
+            "R4",
+            "R8"
+          ],
+          "position": [
+            -29.16067886352539,
+            1982.3380126953125,
+            1131.26171875
+          ]
+        },
+        {
+          "phase": "next",
+          "dt": 25,
+          "rank": 1,
+          "pool": [
+            "R3",
+            "R7",
+            "R4",
+            "R8"
+          ],
+          "position": [
+            -30.984058380126953,
+            1961.7911376953125,
+            1112.311767578125
+          ]
+        }
+      ],
+      "rank_stable_neighbours": true,
+      "pool_stable_neighbours": true,
+      "preceding_300ms": [
+        {
+          "dt": -300,
+          "rank": 1,
+          "in_pool": true
+        },
+        {
+          "dt": -275,
+          "rank": 1,
+          "in_pool": true
+        },
+        {
+          "dt": -250,
+          "rank": 1,
+          "in_pool": true
+        },
+        {
+          "dt": -225,
+          "rank": 1,
+          "in_pool": true
+        },
+        {
+          "dt": -200,
+          "rank": 1,
+          "in_pool": true
+        },
+        {
+          "dt": -175,
+          "rank": 1,
+          "in_pool": true
+        },
+        {
+          "dt": -150,
+          "rank": 1,
+          "in_pool": true
+        },
+        {
+          "dt": -125,
+          "rank": 1,
+          "in_pool": true
+        },
+        {
+          "dt": -100,
+          "rank": 1,
+          "in_pool": true
+        },
+        {
+          "dt": -75,
+          "rank": 1,
+          "in_pool": true
+        },
+        {
+          "dt": -50,
+          "rank": 1,
+          "in_pool": true
+        },
+        {
+          "dt": -25,
+          "rank": 1,
+          "in_pool": true
+        }
+      ],
+      "killer_position_at_death": [
+        -474.74658203125,
+        2193.23193359375,
+        1276.1070556640625
+      ],
+      "rank_from_death_position": 3,
+      "pool_from_death_position": [
+        "R4",
+        "R5",
+        "R3",
+        "R7"
+      ],
+      "killer_movement_since_frag": 520.8
+    },
+    {
+      "id": 19,
+      "map": "toxicity",
+      "time": 1314675,
+      "game_seconds": 694.05,
+      "victim": "Şaitan",
+      "killer": "railbird",
+      "victim_client": 1,
+      "killer_client": 0,
+      "spawn": "R6",
+      "spawn_origin": [
+        96.0,
+        1904.0,
+        1112.0
+      ],
+      "event_position": [
+        96.0,
+        1904.0,
+        1121.0
+      ],
+      "marker_error": 0.0,
+      "death_time": 1310125,
+      "respawn_delay_ms": 4550,
+      "K": 4,
+      "N": 8,
+      "status": "opponent_not_transmitted_alive"
+    }
+  ]
+}

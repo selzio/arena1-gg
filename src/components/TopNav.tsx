@@ -43,10 +43,12 @@ const SKILL_SUB = {
   ru: [
     { label: "Timing Trainer", href: "/skill/trainer", external: false },
     { label: "Респауны", href: "/skill/respawns", external: false },
+    { label: "Прогноз респаунов", href: "/skill/respawn-lab", external: false },
   ],
   en: [
     { label: "Timing Trainer", href: "/skill/trainer", external: false },
     { label: "Respawns", href: "/skill/respawns", external: false },
+    { label: "Respawn Lab", href: "/skill/respawn-lab", external: false },
   ],
 };
 

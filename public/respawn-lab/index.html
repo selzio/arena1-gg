@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' data:; connect-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <title>Respawn Lab — прогноз респаунов</title>
+  <meta name="description" content="Тренажёр прогнозирования респаунов соперника в Quake Live Duel: 15 карт, изучение и проверка прогноза.">
+  <link rel="canonical" href="https://arena1.gg/skill/respawn-lab">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="data.js"></script>
+  <script defer src="spawn-model.js"></script>
+  <script defer src="app.js"></script>
+  <script defer src="embed.js"></script>
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="brand"><span class="brand-mark" aria-hidden="true">R</span><div><h1>RESPAWN <span>LAB</span></h1><p>Прочитай следующий респаун</p></div></div>
+      <div class="header-actions"><span class="offline"><i></i> ОФЛАЙН</span><button id="help-open" class="quiet-button">Как тренироваться</button></div>
+    </header>
+    <main class="layout">
+      <aside class="sidebar">
+        <section class="section">
+          <label class="eyebrow" for="map-select">КАРТА</label><select id="map-select"></select>
+          <div class="map-facts"><span><strong id="point-count">8</strong> респаунов</span><span><strong id="pool-count">4</strong> кандидата</span></div>
+        </section>
+        <section class="section">
+          <p class="eyebrow">РЕЖИМ</p>
+          <div class="mode-switch" role="group" aria-label="Режим тренировки"><button id="mode-learn" aria-pressed="true">Изучение</button><button id="mode-predict" aria-pressed="false">Прогноз</button></div>
+          <p id="mode-description" class="support">Меняй позицию и наблюдай, какие точки входят в пул.</p>
+        </section>
+        <section class="section">
+          <label class="eyebrow" for="scenario-select">ПОЗИЦИЯ ЖИВОГО ИГРОКА</label><select id="scenario-select"></select>
+          <p id="scenario-source" class="tiny">Позиция из разобранной демки</p>
+          <div class="coordinates" id="coordinates"></div>
+          <label for="height-range" class="height-label">Высота Z <output id="height-value"></output></label><input id="height-range" type="range" step="1">
+          <p id="position-note" class="tiny">Кликни по свободной области схемы, чтобы изменить позицию.</p>
+        </section>
+        <section class="section prediction-only" id="single-guess-section" hidden>
+          <label class="eyebrow" for="single-guess">ОДНА ТОЧКА · ПО ЖЕЛАНИЮ</label><select id="single-guess"><option value="">Без одиночного прогноза</option></select>
+          <p class="tiny">Совпадение со случайным выбором считается отдельно.</p>
+        </section>
+        <section class="section stats-section">
+          <p class="eyebrow">ТВОЯ ПРАКТИКА</p><div class="stats"><div><strong id="stat-perfect">0 / 0</strong><span>точных пулов</span></div><div><strong id="stat-points">—</strong><span>верных точек</span></div></div>
+          <p id="hint-stat" class="tiny">Результаты с подсказкой учитываются отдельно.</p>
+          <div class="progress-actions"><button id="export-progress" class="text-button">Экспорт результатов</button><button id="import-progress" class="text-button">Импорт</button><button id="reset-stats" class="text-button">Сбросить</button></div>
+          <input id="import-progress-file" type="file" accept=".json,application/json" hidden><p id="progress-message" class="tiny" role="status" hidden></p>
+        </section>
+      </aside>
+      <section class="workspace" aria-label="Тренировочная карта">
+        <div class="map-header"><div><h2 id="map-title">Toxicity</h2><p id="round-label">Изучение позиций</p></div><label class="layer-control">Геометрия<select id="layer-select"><option value="all">Все уровни</option><option value="current">На текущей высоте</option><option value="none">Только маркеры</option></select></label></div>
+        <div id="map-container" class="map-container"><canvas id="map-canvas" aria-label="Схема карты с респаунами и позицией игрока"></canvas><div id="map-tooltip" class="map-tooltip" hidden></div><div class="map-corner">ВИД СВЕРХУ <span>↑ Y</span></div></div>
+        <div class="legend"><span><i class="legend-player"></i>Твоя позиция</span><span id="legend-pool"><i class="legend-pool"></i>Возможный респаун</span><span id="legend-selected" hidden><i class="legend-selected"></i>Твой выбор</span><span><i class="legend-target"></i>Выпавшая точка</span></div>
+        <div class="round-panel">
+          <div class="round-message"><p id="round-kicker" class="eyebrow">НАБЛЮДАЙ ЗА ПУЛОМ</p><h3 id="round-title">Четыре точки, несколько вариантов</h3><p id="round-description">Здесь виден набор кандидатов для твоего текущего положения.</p><p id="single-result" class="single-result" hidden></p></div>
+          <div class="round-actions"><button id="hint-button" class="secondary-button" hidden>Показать подсказку</button><button id="check-button" class="primary-button">Показать пример появления</button><button id="next-button" class="secondary-button">Другая позиция <span>→</span></button></div>
+        </div>
+        <div class="points-heading"><h3>Точки респауна</h3><span id="selection-count">Пул показан</span></div><div id="spawn-buttons" class="spawn-buttons" role="group" aria-label="Выбор точек респауна"></div>
+        <details id="ranking-details"><summary>Порядок по удалённости</summary><div class="table-wrap"><table><thead><tr><th>Место</th><th>Точка</th><th>Расстояние</th><th>В основном пуле</th></tr></thead><tbody id="ranking-body"></tbody></table></div></details>
+      </section>
+    </main>
+    <footer><span>Стандартный Duel · половина дальних точек · расстояние учитывает X, Y и Z</span><span>Данные карты из установленной Quake Live</span></footer>
+  </div>
+  <dialog id="help-dialog"><div class="dialog-header"><h2>Как тренироваться</h2><button id="help-close" class="quiet-button">Закрыть</button></div><ol><li>В «Изучении» меняй позицию и высоту: подсветка показывает текущий пул.</li><li>В «Прогнозе» отметь все возможные точки и нажми «Проверить».</li><li>Сравни совпадения, пропуски и лишние точки. Затем переходи к новой позиции.</li></ol><p>«Твоя позиция» — положение живого игрока. Выделенные респауны относятся к будущему появлению соперника.</p><p>Одна точка внутри пула выбирается случайно. Тренируй знание набора кандидатов; одиночное попадание — дополнительный результат.</p><p>Схема использует проекцию геометрии BSP. На ней могут перекрываться этажи. Свободная позиция задаётся вручную и не проверяет проходимость стен.</p><p>Это отдельный браузерный тренажёр. Оно не подключается к Quake Live и не получает данные из матчей.</p><p class="keys"><kbd>N</kbd> другая позиция <kbd>H</kbd> подсказка при удержании</p></dialog>
+  <div id="announcement" class="sr-only" aria-live="polite"></div>
+</body>
+</html>

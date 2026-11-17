@@ -10,6 +10,7 @@ import Announce from "./pages/Announce";
 import Verified from "./pages/Verified";
 import Trainer from "./pages/Trainer";
 import Spawns from "./pages/Spawns";
+import RespawnLab from "./pages/RespawnLab";
 import HudEditor from "./pages/HudEditor";
 import EloCup from "./pages/EloCup";
 import Divisions from "./pages/Divisions";
@@ -39,6 +40,7 @@ const App: FC = () => {
               <Route path="/verified" element={<Verified />} />
               <Route path="/skill/trainer" element={<Trainer />} />
               <Route path="/skill/respawns" element={<Spawns />} />
+              <Route path="/skill/respawn-lab" element={<RespawnLab />} />
               {/* скрытая тестовая страница (WIP), не в навигации/пререндере */}
               <Route path="/skill/hud" element={<HudEditor />} />
               {/* старые URL → новые (редирект для SEO/закладок) */}

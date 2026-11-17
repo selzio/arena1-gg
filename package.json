@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "tsc -b && vite build && node scripts/prerender.mjs",
     "build:nopre": "tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:respawn": "node tests/respawn-lab/verify.cjs",
+    "test:respawn:browser": "node tests/respawn-lab/browser.cjs"
   },
   "dependencies": {
     "react": "^18.3.1",

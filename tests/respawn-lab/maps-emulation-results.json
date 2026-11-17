@@ -1,0 +1,1271 @@
+[
+  {
+    "map": "bloodrun",
+    "anchor_class": "item_armor_combat",
+    "position": [
+      224.0,
+      240.0,
+      528.0
+    ],
+    "N": 10,
+    "K": 5,
+    "expected_pool": [
+      "R8",
+      "R9",
+      "R1",
+      "R10",
+      "R2"
+    ],
+    "observed_pool": [
+      "R8",
+      "R9",
+      "R1",
+      "R10",
+      "R2"
+    ],
+    "samples": 128,
+    "passed": true
+  },
+  {
+    "map": "bloodrun",
+    "anchor_class": "item_armor_combat",
+    "position": [
+      672.0,
+      -992.0,
+      80.0
+    ],
+    "N": 10,
+    "K": 5,
+    "expected_pool": [
+      "R3",
+      "R1",
+      "R4",
+      "R6",
+      "R10"
+    ],
+    "observed_pool": [
+      "R3",
+      "R1",
+      "R4",
+      "R6",
+      "R10"
+    ],
+    "samples": 128,
+    "passed": true
+  },
+  {
+    "map": "bloodrun",
+    "anchor_class": "weapon_rocketlauncher",
+    "position": [
+      672.0,
+      -1368.0,
+      272.0
+    ],
+    "N": 10,
+    "K": 5,
+    "expected_pool": [
+      "R3",
+      "R4",
+      "R6",
+      "R1",
+      "R7"
+    ],
+    "observed_pool": [
+      "R3",
+      "R4",
+      "R6",
+      "R1",
+      "R7"
+    ],
+    "samples": 128,
+    "passed": true
+  },
+  {
+    "map": "aerowalk",
+    "anchor_class": "item_armor_combat",
+    "position": [
+      784.0,
+      -16.0,
+      136.0
+    ],
+    "N": 8,
+    "K": 4,
+    "expected_pool": [
+      "R5",
+      "R6",
+      "R2",
+      "R7"
+    ],
+    "observed_pool": [
+      "R5",
+      "R6",
+      "R2",
+      "R7"
+    ],
+    "samples": 128,
+    "passed": true
+  },
+  {
+    "map": "aerowalk",
+    "anchor_class": "weapon_rocketlauncher",
+    "position": [
+      448.0,
+      32.0,
+      368.0
+    ],
+    "N": 8,
+    "K": 4,
+    "expected_pool": [
+      "R5",
+      "R6",
+      "R7",
+      "R2"
+    ],
+    "observed_pool": [
+      "R5",
+      "R6",
+      "R7",
+      "R2"
+    ],
+    "samples": 128,
+    "passed": true
+  },
+  {
+    "map": "aerowalk",
+    "anchor_class": "weapon_railgun",
+    "position": [
+      160.0,
+      -464.0,
+      368.0
+    ],
+    "N": 8,
+    "K": 4,
+    "expected_pool": [
+      "R8",
+      "R2",
+      "R1",
+      "R5"
+    ],
+    "observed_pool": [
+      "R8",
+      "R2",
+      "R1",
+      "R5"
+    ],
+    "samples": 128,
+    "passed": true
+  },
+  {
+    "map": "toxicity",
+    "anchor_class": "item_armor_combat",
+    "position": [
+      -136.0,
+      2256.0,
+      1208.0
+    ],
+    "N": 8,
+    "K": 4,
+    "expected_pool": [
+      "R4",
+      "R3",
+      "R7",
+      "R5"
+    ],
+    "observed_pool": [
+      "R4",
+      "R3",
+      "R7",
+      "R5"
+    ],
+    "samples": 128,
+    "passed": true
+  },
+  {
+    "map": "toxicity",
+    "anchor_class": "weapon_rocketlauncher",
+    "position": [
+      -288.0,
+      1832.0,
+      1040.0
+    ],
+    "N": 8,
+    "K": 4,
+    "expected_pool": [
+      "R3",
+      "R7",
+      "R4",
+      "R8"
+    ],
+    "observed_pool": [
+      "R3",
+      "R7",
+      "R4",
+      "R8"
+    ],
+    "samples": 128,
+    "passed": true
+  },
+  {
+    "map": "toxicity",
+    "anchor_class": "weapon_lightning",
+    "position": [
+      -616.0,
+      2200.0,
+      1124.0
+    ],
+    "N": 8,
+    "K": 4,
+    "expected_pool": [
+      "R4",
+      "R5",
+      "R3",
+      "R1"
+    ],
+    "observed_pool": [
+      "R4",
+      "R5",
+      "R3",
+      "R1"
+    ],
+    "samples": 128,
+    "passed": true
+  },
+  {
+    "map": "hektik",
+    "anchor_class": "weapon_railgun",
+    "position": [
+      -512.0,
+      576.0,
+      48.0
+    ],
+    "N": 10,
+    "K": 5,
+    "expected_pool": [
+      "R6",
+      "R1",
+      "R9",
+      "R7",
+      "R4"
+    ],
+    "observed_pool": [
+      "R6",
+      "R1",
+      "R9",
+      "R7",
+      "R4"
+    ],
+    "samples": 128,
+    "passed": true
+  },
+  {
+    "map": "hektik",
+    "anchor_class": "item_armor_body",
+    "position": [
+      312.0,
+      144.0,
+      272.0
+    ],
+    "N": 10,
+    "K": 5,
+    "expected_pool": [
+      "R8",
+      "R2",
+      "R3",
+      "R9",
+      "R5"
+    ],
+    "observed_pool": [
+      "R8",
+      "R2",
+      "R3",
+      "R9",
+      "R5"
+    ],
+    "samples": 128,
+    "passed": true
+  },
+  {
+    "map": "hektik",
+    "anchor_class": "item_armor_combat",
+    "position": [
+      -224.0,
+      -416.0,
+      48.0
+    ],
+    "N": 10,
+    "K": 5,
+    "expected_pool": [
+      "R3",
+      "R1",
+      "R5",
+      "R10",
+      "R8"
+    ],
+    "observed_pool": [
+      "R3",
+      "R1",
+      "R5",
+      "R10",
+      "R8"
+    ],
+    "samples": 128,
+    "passed": true
+  },
+  {
+    "map": "sinister",
+    "anchor_class": "item_health_mega",
+    "position": [
+      308.0,
+      -160.0,
+      28.0
+    ],
+    "N": 11,
+    "K": 6,
+    "expected_pool": [
+      "R11",
+      "R3",
+      "R1",
+      "R10",
+      "R2",
+      "R4"
+    ],
+    "observed_pool": [
+      "R11",
+      "R3",
+      "R1",
+      "R10",
+      "R2",
+      "R4"
+    ],
+    "samples": 128,
+    "passed": true
+  },
+  {
+    "map": "sinister",
+    "anchor_class": "item_armor_body",
+    "position": [
+      656.0,
+      1040.0,
+      560.0
+    ],
+    "N": 11,
+    "K": 6,
+    "expected_pool": [
+      "R3",
+      "R2",
+      "R9",
+      "R10",
+      "R4",
+      "R7"
+    ],
+    "observed_pool": [
+      "R3",
+      "R2",
+      "R9",
+      "R10",
+      "R4",
+      "R7"
+    ],
+    "samples": 128,
+    "passed": true
+  },
+  {
+    "map": "sinister",
+    "anchor_class": "weapon_lightning",
+    "position": [
+      512.0,
+      896.0,
+      40.0
+    ],
+    "N": 11,
+    "K": 6,
+    "expected_pool": [
+      "R3",
+      "R2",
+      "R9",
+      "R10",
+      "R4",
+      "R1"
+    ],
+    "observed_pool": [
+      "R3",
+      "R2",
+      "R9",
+      "R10",
+      "R4",
+      "R1"
+    ],
+    "samples": 128,
+    "passed": true
+  },
+  {
+    "map": "campgrounds",
+    "anchor_class": "item_armor_combat",
+    "position": [
+      -1472.0,
+      448.0,
+      530.0
+    ],
+    "N": 17,
+    "K": 9,
+    "expected_pool": [
+      "R4",
+      "R16",
+      "R10",
+      "R12",
+      "R7",
+      "R3",
+      "R15",
+      "R14",
+      "R11"
+    ],
+    "observed_pool": [
+      "R4",
+      "R16",
+      "R10",
+      "R12",
+      "R7",
+      "R3",
+      "R15",
+      "R14",
+      "R11"
+    ],
+    "samples": 128,
+    "passed": true
+  },
+  {
+    "map": "campgrounds",
+    "anchor_class": "item_armor_body",
+    "position": [
+      256.0,
+      -1344.0,
+      208.0
+    ],
+    "N": 17,
+    "K": 9,
+    "expected_pool": [
+      "R2",
+      "R17",
+      "R5",
+      "R6",
+      "R1",
+      "R9",
+      "R8",
+      "R12",
+      "R15"
+    ],
+    "observed_pool": [
+      "R2",
+      "R17",
+      "R5",
+      "R6",
+      "R1",
+      "R9",
+      "R8",
+      "R12",
+      "R15"
+    ],
+    "samples": 128,
+    "passed": true
+  },
+  {
+    "map": "campgrounds",
+    "anchor_class": "weapon_railgun",
+    "position": [
+      448.0,
+      -160.0,
+      528.0
+    ],
+    "N": 17,
+    "K": 9,
+    "expected_pool": [
+      "R5",
+      "R9",
+      "R6",
+      "R13",
+      "R2",
+      "R17",
+      "R7",
+      "R10",
+      "R11"
+    ],
+    "observed_pool": [
+      "R5",
+      "R9",
+      "R6",
+      "R13",
+      "R2",
+      "R17",
+      "R7",
+      "R10",
+      "R11"
+    ],
+    "samples": 128,
+    "passed": true
+  },
+  {
+    "map": "furiousheights",
+    "anchor_class": "weapon_rocketlauncher",
+    "position": [
+      -64.0,
+      512.0,
+      24.0
+    ],
+    "N": 17,
+    "K": 9,
+    "expected_pool": [
+      "R12",
+      "R14",
+      "R7",
+      "R11",
+      "R15",
+      "R16",
+      "R13",
+      "R17",
+      "R5"
+    ],
+    "observed_pool": [
+      "R12",
+      "R14",
+      "R7",
+      "R11",
+      "R15",
+      "R16",
+      "R13",
+      "R17",
+      "R5"
+    ],
+    "samples": 128,
+    "passed": true
+  },
+  {
+    "map": "furiousheights",
+    "anchor_class": "item_armor_combat",
+    "position": [
+      192.0,
+      1088.0,
+      216.0
+    ],
+    "N": 17,
+    "K": 9,
+    "expected_pool": [
+      "R12",
+      "R14",
+      "R7",
+      "R11",
+      "R15",
+      "R5",
+      "R13",
+      "R16",
+      "R17"
+    ],
+    "observed_pool": [
+      "R12",
+      "R14",
+      "R7",
+      "R11",
+      "R15",
+      "R5",
+      "R13",
+      "R16",
+      "R17"
+    ],
+    "samples": 128,
+    "passed": true
+  },
+  {
+    "map": "furiousheights",
+    "anchor_class": "item_armor_body",
+    "position": [
+      -1520.0,
+      320.0,
+      -8.0
+    ],
+    "N": 17,
+    "K": 9,
+    "expected_pool": [
+      "R5",
+      "R2",
+      "R9",
+      "R1",
+      "R3",
+      "R16",
+      "R8",
+      "R6",
+      "R10"
+    ],
+    "observed_pool": [
+      "R5",
+      "R2",
+      "R9",
+      "R1",
+      "R3",
+      "R16",
+      "R8",
+      "R6",
+      "R10"
+    ],
+    "samples": 128,
+    "passed": true
+  },
+  {
+    "map": "silence",
+    "anchor_class": "item_armor_body",
+    "position": [
+      352.0,
+      -1264.0,
+      248.0
+    ],
+    "N": 12,
+    "K": 6,
+    "expected_pool": [
+      "R1",
+      "R3",
+      "R5",
+      "R9",
+      "R7",
+      "R8"
+    ],
+    "observed_pool": [
+      "R1",
+      "R3",
+      "R5",
+      "R9",
+      "R7",
+      "R8"
+    ],
+    "samples": 128,
+    "passed": true
+  },
+  {
+    "map": "silence",
+    "anchor_class": "item_armor_combat",
+    "position": [
+      -864.0,
+      288.0,
+      216.0
+    ],
+    "N": 12,
+    "K": 6,
+    "expected_pool": [
+      "R12",
+      "R2",
+      "R11",
+      "R10",
+      "R9",
+      "R7"
+    ],
+    "observed_pool": [
+      "R12",
+      "R2",
+      "R11",
+      "R10",
+      "R9",
+      "R7"
+    ],
+    "samples": 128,
+    "passed": true
+  },
+  {
+    "map": "silence",
+    "anchor_class": "weapon_rocketlauncher",
+    "position": [
+      -192.0,
+      736.0,
+      256.0
+    ],
+    "N": 12,
+    "K": 6,
+    "expected_pool": [
+      "R2",
+      "R11",
+      "R10",
+      "R12",
+      "R4",
+      "R6"
+    ],
+    "observed_pool": [
+      "R2",
+      "R11",
+      "R10",
+      "R12",
+      "R4",
+      "R6"
+    ],
+    "samples": 128,
+    "passed": true
+  },
+  {
+    "map": "cure",
+    "anchor_class": "weapon_lightning",
+    "position": [
+      1472.0,
+      -896.0,
+      -48.0
+    ],
+    "N": 12,
+    "K": 6,
+    "expected_pool": [
+      "R4",
+      "R10",
+      "R12",
+      "R1",
+      "R11",
+      "R3"
+    ],
+    "observed_pool": [
+      "R4",
+      "R10",
+      "R12",
+      "R1",
+      "R11",
+      "R3"
+    ],
+    "samples": 128,
+    "passed": true
+  },
+  {
+    "map": "cure",
+    "anchor_class": "item_health_mega",
+    "position": [
+      1536.0,
+      -960.0,
+      208.0
+    ],
+    "N": 12,
+    "K": 6,
+    "expected_pool": [
+      "R4",
+      "R10",
+      "R12",
+      "R1",
+      "R11",
+      "R3"
+    ],
+    "observed_pool": [
+      "R4",
+      "R10",
+      "R12",
+      "R1",
+      "R11",
+      "R3"
+    ],
+    "samples": 128,
+    "passed": true
+  },
+  {
+    "map": "cure",
+    "anchor_class": "weapon_railgun",
+    "position": [
+      32.0,
+      -736.0,
+      344.0
+    ],
+    "N": 12,
+    "K": 6,
+    "expected_pool": [
+      "R9",
+      "R1",
+      "R7",
+      "R3",
+      "R4",
+      "R8"
+    ],
+    "observed_pool": [
+      "R9",
+      "R1",
+      "R7",
+      "R3",
+      "R4",
+      "R8"
+    ],
+    "samples": 128,
+    "passed": true
+  },
+  {
+    "map": "lostworld",
+    "anchor_class": "weapon_lightning",
+    "position": [
+      -745.0,
+      448.0,
+      337.0
+    ],
+    "N": 18,
+    "K": 9,
+    "expected_pool": [
+      "R10",
+      "R8",
+      "R17",
+      "R4",
+      "R2",
+      "R6",
+      "R14",
+      "R1",
+      "R11"
+    ],
+    "observed_pool": [
+      "R10",
+      "R8",
+      "R17",
+      "R4",
+      "R2",
+      "R6",
+      "R14",
+      "R1",
+      "R11"
+    ],
+    "samples": 128,
+    "passed": true
+  },
+  {
+    "map": "lostworld",
+    "anchor_class": "weapon_rocketlauncher",
+    "position": [
+      64.0,
+      -192.0,
+      456.0
+    ],
+    "N": 18,
+    "K": 9,
+    "expected_pool": [
+      "R11",
+      "R10",
+      "R6",
+      "R15",
+      "R8",
+      "R16",
+      "R5",
+      "R17",
+      "R4"
+    ],
+    "observed_pool": [
+      "R11",
+      "R10",
+      "R6",
+      "R15",
+      "R8",
+      "R16",
+      "R5",
+      "R17",
+      "R4"
+    ],
+    "samples": 128,
+    "passed": true
+  },
+  {
+    "map": "lostworld",
+    "anchor_class": "item_health_mega",
+    "position": [
+      1088.0,
+      -16.0,
+      266.0
+    ],
+    "N": 18,
+    "K": 9,
+    "expected_pool": [
+      "R5",
+      "R12",
+      "R11",
+      "R3",
+      "R13",
+      "R6",
+      "R15",
+      "R7",
+      "R16"
+    ],
+    "observed_pool": [
+      "R5",
+      "R12",
+      "R11",
+      "R3",
+      "R13",
+      "R6",
+      "R15",
+      "R7",
+      "R16"
+    ],
+    "samples": 128,
+    "passed": true
+  },
+  {
+    "map": "verticalvengeance",
+    "anchor_class": "item_armor_combat",
+    "position": [
+      642.0,
+      0.0,
+      472.0
+    ],
+    "N": 12,
+    "K": 6,
+    "expected_pool": [
+      "R9",
+      "R8",
+      "R10",
+      "R6",
+      "R1",
+      "R2"
+    ],
+    "observed_pool": [
+      "R9",
+      "R8",
+      "R10",
+      "R6",
+      "R1",
+      "R2"
+    ],
+    "samples": 128,
+    "passed": true
+  },
+  {
+    "map": "verticalvengeance",
+    "anchor_class": "item_health_mega",
+    "position": [
+      0.0,
+      -456.0,
+      488.0
+    ],
+    "N": 12,
+    "K": 6,
+    "expected_pool": [
+      "R8",
+      "R11",
+      "R7",
+      "R6",
+      "R5",
+      "R9"
+    ],
+    "observed_pool": [
+      "R8",
+      "R11",
+      "R7",
+      "R6",
+      "R5",
+      "R9"
+    ],
+    "samples": 128,
+    "passed": true
+  },
+  {
+    "map": "verticalvengeance",
+    "anchor_class": "weapon_railgun",
+    "position": [
+      -616.0,
+      -72.0,
+      80.0
+    ],
+    "N": 12,
+    "K": 6,
+    "expected_pool": [
+      "R5",
+      "R11",
+      "R7",
+      "R4",
+      "R12",
+      "R8"
+    ],
+    "observed_pool": [
+      "R5",
+      "R11",
+      "R7",
+      "R4",
+      "R12",
+      "R8"
+    ],
+    "samples": 128,
+    "passed": true
+  },
+  {
+    "map": "dismemberment",
+    "anchor_class": "item_armor_body",
+    "position": [
+      -512.0,
+      -720.0,
+      8.0
+    ],
+    "N": 7,
+    "K": 4,
+    "expected_pool": [
+      "R7",
+      "R5",
+      "R2",
+      "R3"
+    ],
+    "observed_pool": [
+      "R7",
+      "R5",
+      "R2",
+      "R3"
+    ],
+    "samples": 128,
+    "passed": true
+  },
+  {
+    "map": "dismemberment",
+    "anchor_class": "weapon_lightning",
+    "position": [
+      632.0,
+      -848.0,
+      -88.0
+    ],
+    "N": 7,
+    "K": 4,
+    "expected_pool": [
+      "R7",
+      "R2",
+      "R4",
+      "R1"
+    ],
+    "observed_pool": [
+      "R7",
+      "R2",
+      "R4",
+      "R1"
+    ],
+    "samples": 128,
+    "passed": true
+  },
+  {
+    "map": "dismemberment",
+    "anchor_class": "weapon_rocketlauncher",
+    "position": [
+      1152.0,
+      -128.0,
+      -40.0
+    ],
+    "N": 7,
+    "K": 4,
+    "expected_pool": [
+      "R1",
+      "R2",
+      "R7",
+      "R6"
+    ],
+    "observed_pool": [
+      "R1",
+      "R2",
+      "R7",
+      "R6"
+    ],
+    "samples": 128,
+    "passed": true
+  },
+  {
+    "map": "houseofdecay",
+    "anchor_class": "weapon_lightning",
+    "position": [
+      -896.0,
+      -256.0,
+      16.0
+    ],
+    "N": 6,
+    "K": 3,
+    "expected_pool": [
+      "R1",
+      "R2",
+      "R4"
+    ],
+    "observed_pool": [
+      "R1",
+      "R2",
+      "R4"
+    ],
+    "samples": 128,
+    "passed": true
+  },
+  {
+    "map": "houseofdecay",
+    "anchor_class": "item_armor_combat",
+    "position": [
+      856.0,
+      224.0,
+      16.0
+    ],
+    "N": 6,
+    "K": 3,
+    "expected_pool": [
+      "R5",
+      "R3",
+      "R6"
+    ],
+    "observed_pool": [
+      "R5",
+      "R3",
+      "R6"
+    ],
+    "samples": 128,
+    "passed": true
+  },
+  {
+    "map": "houseofdecay",
+    "anchor_class": "item_health_mega",
+    "position": [
+      -64.0,
+      288.0,
+      -112.0
+    ],
+    "N": 6,
+    "K": 3,
+    "expected_pool": [
+      "R1",
+      "R5",
+      "R3"
+    ],
+    "observed_pool": [
+      "R1",
+      "R5",
+      "R3"
+    ],
+    "samples": 128,
+    "passed": true
+  },
+  {
+    "map": "battleforged",
+    "anchor_class": "item_health_mega",
+    "position": [
+      -64.0,
+      -768.0,
+      -456.0
+    ],
+    "N": 9,
+    "K": 5,
+    "expected_pool": [
+      "R7",
+      "R4",
+      "R1",
+      "R8",
+      "R6"
+    ],
+    "observed_pool": [
+      "R7",
+      "R4",
+      "R1",
+      "R8",
+      "R6"
+    ],
+    "samples": 128,
+    "passed": true
+  },
+  {
+    "map": "battleforged",
+    "anchor_class": "weapon_railgun",
+    "position": [
+      -392.0,
+      -288.0,
+      16.0
+    ],
+    "N": 9,
+    "K": 5,
+    "expected_pool": [
+      "R1",
+      "R7",
+      "R2",
+      "R9",
+      "R6"
+    ],
+    "observed_pool": [
+      "R1",
+      "R7",
+      "R2",
+      "R9",
+      "R6"
+    ],
+    "samples": 128,
+    "passed": true
+  },
+  {
+    "map": "battleforged",
+    "anchor_class": "weapon_rocketlauncher",
+    "position": [
+      16.0,
+      -48.0,
+      -80.0
+    ],
+    "N": 9,
+    "K": 5,
+    "expected_pool": [
+      "R2",
+      "R1",
+      "R7",
+      "R8",
+      "R4"
+    ],
+    "observed_pool": [
+      "R2",
+      "R1",
+      "R7",
+      "R8",
+      "R4"
+    ],
+    "samples": 128,
+    "passed": true
+  },
+  {
+    "map": "elder",
+    "anchor_class": "weapon_lightning",
+    "position": [
+      -1088.0,
+      64.0,
+      208.0
+    ],
+    "N": 6,
+    "K": 3,
+    "expected_pool": [
+      "R6",
+      "R5",
+      "R2"
+    ],
+    "observed_pool": [
+      "R6",
+      "R5",
+      "R2"
+    ],
+    "samples": 128,
+    "passed": true
+  },
+  {
+    "map": "elder",
+    "anchor_class": "weapon_railgun",
+    "position": [
+      -1696.0,
+      -160.0,
+      -296.0
+    ],
+    "N": 6,
+    "K": 3,
+    "expected_pool": [
+      "R6",
+      "R4",
+      "R1"
+    ],
+    "observed_pool": [
+      "R6",
+      "R4",
+      "R1"
+    ],
+    "samples": 128,
+    "passed": true
+  },
+  {
+    "map": "elder",
+    "anchor_class": "item_armor_combat",
+    "position": [
+      0.0,
+      -416.0,
+      -112.0
+    ],
+    "N": 6,
+    "K": 3,
+    "expected_pool": [
+      "R2",
+      "R3",
+      "R5"
+    ],
+    "observed_pool": [
+      "R2",
+      "R3",
+      "R5"
+    ],
+    "samples": 128,
+    "passed": true
+  }
+]
