@@ -1,6 +1,6 @@
 import { parseCfg, safePath, normalizeHudEntries, hudReferences } from './hud.mjs';
 import { unzipSync } from './vendor/fflate.mjs';
-import { ResourceCache, mib } from './resource-cache.mjs';
+import { ResourceCache } from './resource-cache.mjs';
 import { createLibraryUI } from './library-ui.mjs';
 import { PlaybackEndTracker } from './playback-end.mjs';
 import { createAudioUnlock, createFullscreen, brightnessValue } from './player-platform.mjs';
@@ -42,9 +42,7 @@ function error(text) {
 }
 function status(text, percent = null) {
   $('loading').hidden = false;
-  const separator = text.indexOf(' · ');
-  $('status').textContent = separator < 0 ? text : text.slice(0,separator);
-  $('asset-progress').textContent = separator < 0 ? '' : `Game resources: ${text.slice(separator+3)}`;
+  $('status').textContent = 'Loading';
   if (percent === null) $('progress').removeAttribute('value');
   else $('progress').value = percent;
 }
@@ -113,7 +111,8 @@ function command(text) {
 function profileCommand() {
   return ['exec default.cfg', 'exec arena-viewer.cfg', ...customCommands.map(c => `seta ${c.name} "${c.value}"`),
     `set cg_wh ${xray ? 4 : 0}`, 'set cg_fxThreads 0', 'set cg_freecam 0',
-    'set s_sdlCapture 0', 'set s_alCapture 0', 'set cl_voip 0'].join('\n');
+    'set s_sdlCapture 0', 'set s_alCapture 0', 'set cl_voip 0',
+    'set s_mixahead 0.25', 'set s_mixPreStep 0.05', 'set s_useTimescale 0', 'set s_forceScale 0', 'set com_maxfps 60'].join('\n');
 }
 function mountCustom(module) {
   for (const [name, data] of profileFiles) {
@@ -147,8 +146,6 @@ async function openDemo(file, options = {}) {
   reportedProfile = false;
   starting = true;
   status('Preparing player');
-  $('demo-load-size').textContent = mib(file.size);
-  $('loading-note').textContent = 'The larger download below is the player’s game assets, not your demo. Assets are saved for reuse when browser storage is available.';
   try {
     const bytes = new Uint8Array(await file.arrayBuffer());
     const extension = file.name.match(/\.dm_\d+$/i)[0].toLowerCase();
@@ -171,6 +168,8 @@ async function openDemo(file, options = {}) {
           '+set','net_enabled','0','+set','sv_pure','0',
           // Demo playback never needs an input device. Set before sound initialization.
           '+set','s_sdlCapture','0','+set','s_alCapture','0','+set','cl_voip','0',
+          // Give Safari's main-thread SDL audio callback more headroom during effects.
+          '+set','s_sdlDevSamps','4096',
           '+set','com_hunkMegs','512','+set','com_zoneMegs','128',
           '+set','r_mode','-1','+set','r_customwidth','1280','+set','r_customheight','720',
           '+set','r_fullscreen','0','+set','cl_downloadWorkshops','0',

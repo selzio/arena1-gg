@@ -21,7 +21,7 @@ test('complete packs survive a new cache client without another download', async
   const second = new ResourceCache({storage: disk, fetcher});
   assert.deepEqual([...await second.read('/pack.pk3', {size: 3, progress: text => messages.push(text)})], [1,2,3]);
   assert.equal(downloads, 1);
-  assert.match(messages[0], /Loading saved/);
+  assert.equal(messages[0], 'Loading');
 });
 test('incomplete downloads are rejected and never saved', async () => {
   const disk = storage();

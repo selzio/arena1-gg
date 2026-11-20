@@ -50,3 +50,21 @@ test('brightness is bounded and has a brighter default',()=>{
  assert.equal(brightnessValue('invalid'),135);assert.equal(brightnessValue(500),200);
  assert.equal(brightnessValue(-5),80);assert.equal(brightnessValue(145),145);
 });
+
+
+test('embedded fullscreen removes minimum height and follows tablet viewport changes',async()=>{
+ const x=elements();const properties=new Map();const events={};
+ x.screen.style={setProperty:(k,v)=>properties.set(k,v),removeProperty:k=>properties.delete(k)};
+ x.host.visualViewport={width:1024,height:540,offsetLeft:0,offsetTop:0,addEventListener:(name,fn)=>events[name]=fn};
+ const parentViewport={width:1024,height:540,offsetTop:0,offsetLeft:0,addEventListener(){}};
+ const frame={style:{cssText:'min-height:640px'},ownerDocument:{body:{style:{overflow:''}},defaultView:{visualViewport:parentViewport}}};
+ x.host.frameElement=frame;
+ const fs=createFullscreen(x);assert.equal(await fs.toggle(),'expanded');
+ assert.match(frame.style.cssText,/min-height:0!important/);
+ assert.match(frame.style.cssText,/height:540px!important/);
+ assert.equal(properties.get('--player-height'),'540px');
+ parentViewport.height=900;x.host.visualViewport.height=900;events.resize();
+ assert.match(frame.style.cssText,/height:900px!important/);
+ assert.equal(properties.get('--player-height'),'900px');
+ await fs.toggle();assert.equal(frame.style.cssText,'min-height:640px');assert.equal(properties.size,0);
+});

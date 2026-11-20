@@ -1,5 +1,4 @@
 import {DemoLibrary} from './demo-library.mjs';
-import {mib} from './resource-cache.mjs';
 const $ = id => document.getElementById(id);
 export function createLibraryUI(openDemo) {
   const library = new DemoLibrary(); let rows = [];
@@ -27,7 +26,7 @@ export function createLibraryUI(openDemo) {
       const item = document.createElement('div'); item.className = 'library-item';
       const info = document.createElement('div');
       const name = document.createElement('strong'); name.textContent = row.name;
-      const meta = document.createElement('small'); meta.textContent = `${mib(row.size)} · ${new Date(row.added).toLocaleDateString('en-GB')}`;
+      const meta = document.createElement('small'); meta.textContent = new Date(row.added).toLocaleDateString('en-GB');
       info.append(name,meta); item.append(info);
       const button = (label, action) => { const b=document.createElement('button'); b.type='button'; b.className='text-button'; b.textContent=label; b.addEventListener('click',action); item.append(b); };
       button('Play',()=>play(row,false));
@@ -45,7 +44,7 @@ export function createLibraryUI(openDemo) {
       list.append(item);
     }
     $('library-empty').hidden = rows.length > 0;
-    $('library-count').textContent = `${rows.length} demos · ${mib(rows.reduce((sum,row)=>sum+row.size,0))} / 1 GiB`;
+    $('library-count').textContent = `${rows.length} demos`;
   }
   async function refresh() {
     try { rows=await library.list(); render(); } catch(error) { notice(`Library unavailable: ${error.message}`); }

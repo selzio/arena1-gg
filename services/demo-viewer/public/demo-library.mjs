@@ -41,7 +41,7 @@ export class DemoLibrary {
     const rows = await result(demos.getAll()); const existing = rows.find(x=>x.id === id);
     if (!existing && rows.reduce((sum,x)=>sum+x.size,0) + file.size > MAX_BYTES) {
       tx.abort(); await done.catch(()=>{});
-      throw Error('Your demo library is full (1 GiB). Remove a demo to save another.');
+      throw Error('Your demo library is full. Remove a demo to save another.');
     }
     const row = {...existing, id, name: file.name, size: file.size,
       added: existing?.added || Date.now(), lastOpened: Date.now(), position: existing?.position || 0,

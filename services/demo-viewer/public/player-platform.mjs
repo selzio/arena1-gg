@@ -31,10 +31,28 @@ export function createAudioUnlock({getEngine, host = globalThis, onState = () =>
 
 export function createFullscreen({screen, doc = document, host = window, onChange = () => {}}) {
   let expanded=false, previousBodyOverflow='', frameRestore=null;
+  const viewportSize=view=>{
+    const v=view?.visualViewport;
+    return {width:v?.width || view?.innerWidth,height:v?.height || view?.innerHeight,
+      left:v?.offsetLeft || 0,top:v?.offsetTop || 0};
+  };
+  const fitViewport=()=>{
+    if (!expanded) return;
+    const v=viewportSize(host);
+    for (const [key,value] of Object.entries(v)) {
+      if (Number.isFinite(value)) screen.style?.setProperty(`--player-${key}`,`${value}px`);
+    }
+    if (frameRestore) {
+      const {frame,css}=frameRestore;
+      const parent=viewportSize(frame.ownerDocument.defaultView);
+      frame.style.cssText=css+`;position:fixed!important;left:${parent.left}px!important;top:${parent.top}px!important;right:auto!important;bottom:auto!important;width:${parent.width ? parent.width+'px' : '100vw'}!important;height:${parent.height ? parent.height+'px' : '100dvh'}!important;min-width:0!important;min-height:0!important;max-width:none!important;max-height:none!important;border:0!important;z-index:2147483647!important`;
+    }
+  };
   const nativeElement=()=>doc.fullscreenElement || doc.webkitFullscreenElement;
   const sync=()=>onChange(Boolean(nativeElement() || expanded));
   const restore=()=>{
     expanded=false;screen.classList.remove('viewport-fullscreen');
+    for (const key of ['width','height','left','top']) screen.style?.removeProperty(`--player-${key}`);
     doc.body.style.overflow=previousBodyOverflow;
     if (frameRestore) {
       const {frame,css,body,overflow}=frameRestore;
@@ -50,12 +68,16 @@ export function createFullscreen({screen, doc = document, host = window, onChang
       if (frame && frame.ownerDocument?.body) {
         const body=frame.ownerDocument.body;
         frameRestore={frame,css:frame.style.cssText,body,overflow:body.style.overflow};
-        frame.style.cssText+=';position:fixed;inset:0;width:100vw;height:100dvh;max-width:none;max-height:none;border:0;z-index:2147483647';
         body.style.overflow='hidden';
       }
     } catch { /* Cross-origin embeds can still expand inside their own viewport. */ }
-    expanded=true;screen.classList.add('viewport-fullscreen');sync();
+    expanded=true;screen.classList.add('viewport-fullscreen');fitViewport();sync();
   };
+  for (const view of new Set([host,host.frameElement?.ownerDocument?.defaultView].filter(Boolean))) {
+    view.addEventListener?.('resize',fitViewport);
+    view.visualViewport?.addEventListener?.('resize',fitViewport);
+    view.visualViewport?.addEventListener?.('scroll',fitViewport);
+  }
   doc.addEventListener?.('fullscreenchange',sync);
   doc.addEventListener?.('webkitfullscreenchange',sync);
   host.addEventListener?.('keydown',event=>{if(event.key==='Escape' && expanded) restore();});
