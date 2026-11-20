@@ -2,6 +2,7 @@ import { parseCfg, safePath, normalizeHudEntries, hudReferences } from './hud.mj
 import { unzipSync } from './vendor/fflate.mjs';
 import { ResourceCache, mib } from './resource-cache.mjs';
 import { createLibraryUI } from './library-ui.mjs';
+import { createAudioUnlock, createFullscreen, brightnessValue } from './player-platform.mjs';
 
 const $ = id => document.getElementById(id);
 const BASE = '/demo-viewer';
@@ -39,7 +40,9 @@ function error(text) {
 }
 function status(text, percent = null) {
   $('loading').hidden = false;
-  $('status').textContent = text;
+  const separator = text.indexOf(' · ');
+  $('status').textContent = separator < 0 ? text : text.slice(0,separator);
+  $('asset-progress').textContent = separator < 0 ? '' : `Game resources: ${text.slice(separator+3)}`;
   if (percent === null) $('progress').removeAttribute('value');
   else $('progress').value = percent;
 }
@@ -139,7 +142,8 @@ async function openDemo(file, options = {}) {
   reportedProfile = false;
   starting = true;
   status('Preparing player');
-  $('loading-note').textContent = `Demo: ${mib(file.size)} (local file). Game files are downloaded separately and saved for reuse.`;
+  $('demo-load-size').textContent = mib(file.size);
+  $('loading-note').textContent = 'The larger download below is the player’s game assets, not your demo. Assets are saved for reuse when browser storage is available.';
   try {
     const bytes = new Uint8Array(await file.arrayBuffer());
     const extension = file.name.match(/\.dm_\d+$/i)[0].toLowerCase();
@@ -179,7 +183,7 @@ async function openDemo(file, options = {}) {
           module.addRunDependency('arena-files');
           (async () => {
             try {
-              for (const resource of manifest.files) await loadResource(module, resource, 'shared game files');
+              for (const resource of manifest.files) await loadResource(module, resource, 'shared files');
               for (const resource of await request(manifest.profile)) await loadResource(module, resource, 'default HUD');
               writeFile(module, `/baseq3/demos/${filename}`, bytes);
               mountCustom(module);
@@ -287,7 +291,40 @@ $('xray').addEventListener('click', () => {
 });
 $('pause').addEventListener('click', togglePause);
 $('speed').addEventListener('change', event => command(`timescale ${Number(event.target.value)}`));
-$('volume').addEventListener('input', event => command(`s_volume ${Number(event.target.value) / 100}`));
+let previousVolume=Number($('volume').value) || 60;
+function updateAudioState() {
+  const running=audio.state()==='running';
+  const active=Boolean(lastState.active && !pendingFailure);
+  $('audio-unlock').hidden=!active || running || Number($('volume').value)===0;
+  $('sound-toggle').classList.toggle('sound-blocked',active && !running);
+  const label=!running ? 'Enable sound' : Number($('volume').value)===0 ? 'Unmute' : 'Mute';
+  $('sound-toggle').setAttribute('aria-label',label);$('sound-toggle').title=label;
+}
+const audio=createAudioUnlock({getEngine:()=>engine,onState:()=>updateAudioState()});
+// Do not await unlock before requesting fullscreen: Safari needs the original gesture.
+$('screen').addEventListener('pointerdown',()=>{audio.unlock().catch(log);},{capture:true});
+$('audio-unlock').addEventListener('click',()=>{audio.unlock().catch(log);});
+$('sound-toggle').addEventListener('click',()=>{
+  if (audio.state()!=='running') {audio.unlock().catch(log);return;}
+  const volume=Number($('volume').value);
+  if (volume>0) {previousVolume=volume;$('volume').value='0';}
+  else $('volume').value=String(previousVolume);
+  command(`s_volume ${Number($('volume').value)/100}`);updateAudioState();
+});
+$('volume').addEventListener('input',event=>{
+  audio.unlock().catch(log);command(`s_volume ${Number(event.target.value)/100}`);updateAudioState();
+});
+function applyBrightness(value) {
+  const level=brightnessValue(value);$('brightness').value=String(level);
+  $('brightness-value').textContent=`${level}%`; $('canvas').style.filter=`brightness(${level/100})`;
+}
+let storedBrightness=135;
+try {storedBrightness=localStorage.getItem('arena1-brightness') || 135;} catch {}
+applyBrightness(storedBrightness);
+$('brightness').addEventListener('input',event=>{
+  applyBrightness(event.target.value);
+  try {localStorage.setItem('arena1-brightness',String(brightnessValue(event.target.value)));} catch {}
+});
 function seek(ms) {
   const target = Math.max(lastState.start, Math.min(ms, lastState.end - 1));
   command(`seek ${(target - lastState.start) / 1000}`);
@@ -295,10 +332,12 @@ function seek(ms) {
 $('back').addEventListener('click', () => skip(-10));
 $('forward').addEventListener('click', () => skip(10));
 $('seek').addEventListener('change', event => seek(lastState.start + (lastState.end-lastState.start) * Number(event.target.value) / 1000));
-async function fullscreen() {
-  if (document.fullscreenElement) await document.exitFullscreen();
-  else await $('screen').requestFullscreen?.();
-}
+const fullscreenController=createFullscreen({screen:$('screen'),onChange:active=>{
+  $('fullscreen').setAttribute('aria-label',active ? 'Exit fullscreen' : 'Fullscreen');
+  $('fullscreen').title=active ? 'Exit fullscreen (F)' : 'Fullscreen (F)';
+  $('fullscreen').setAttribute('aria-pressed',String(active));
+}});
+function fullscreen() { return fullscreenController.toggle().catch(log); }
 $('fullscreen').addEventListener('click', fullscreen);
 function settings(open) {
   $('settings').hidden = !open;
@@ -366,6 +405,7 @@ setInterval(() => {
   try {
     const state = JSON.parse(engine.ccall('arena_state', 'string', [], []));
     lastState = state;
+    updateAudioState();
     if (state.active && pendingResume > 0) {
       const offset = Math.min(pendingResume, Math.max(0,state.end-state.start-1000));
       pendingResume = 0; if (offset > 0) command(`fastforward ${offset / 1000}`);

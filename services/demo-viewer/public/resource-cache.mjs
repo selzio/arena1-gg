@@ -18,14 +18,14 @@ export class ResourceCache {
         if (saved) {
           const bytes = new Uint8Array(await saved.arrayBuffer());
           if (!size || bytes.length === size) {
-            progress(`Loading saved ${label} · ${mib(bytes.length)}`, 100);
+            progress(`Loading saved game assets — ${label} · ${mib(bytes.length)}`, 100);
             return bytes;
           }
           await cache.delete(url);
         }
       } catch { /* A blocked/evicted cache must not prevent playback. */ }
     }
-    progress(`Downloading ${label}${size ? ` · ${mib(size)}` : ''}`, 0);
+    progress(`Downloading game assets — ${label}${size ? ` · ${mib(size)}` : ''}`, 0);
     const response = await this.fetcher(url);
     if (!response.ok) throw new Error(`Could not load ${label}: ${response.status}`);
     const total = size || Number(response.headers.get('Content-Length')) || 0;
@@ -45,7 +45,7 @@ export class ResourceCache {
       } else chunks.push(value);
       received += value.length;
       if (Date.now() - lastUpdate >= 100) {
-        progress(`Downloading ${label} · ${mib(received)}${total ? ` / ${mib(total)}` : ''}`, total ? received / total * 100 : null);
+        progress(`Downloading game assets — ${label} · ${mib(received)}${total ? ` / ${mib(total)}` : ''}`, total ? received / total * 100 : null);
         lastUpdate = Date.now();
       }
     }
@@ -71,7 +71,7 @@ export class ResourceCache {
         }}));
       } catch { this.report('Browser storage unavailable; using the HTTP cache.'); }
     }
-    progress(`Loaded ${label} · ${mib(bytes.length)}`, 100);
+    progress(`Game assets ready — ${label} · ${mib(bytes.length)}`, 100);
     return bytes;
   }
 }
