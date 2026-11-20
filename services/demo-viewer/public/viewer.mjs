@@ -2,6 +2,7 @@ import { parseCfg, safePath, normalizeHudEntries, hudReferences } from './hud.mj
 import { unzipSync } from './vendor/fflate.mjs';
 import { ResourceCache, mib } from './resource-cache.mjs';
 import { createLibraryUI } from './library-ui.mjs';
+import { PlaybackEndTracker } from './playback-end.mjs';
 import { createAudioUnlock, createFullscreen, brightnessValue } from './player-platform.mjs';
 
 const $ = id => document.getElementById(id);
@@ -13,6 +14,7 @@ const decoder = new TextDecoder();
 let engine, starting = false, busy = false, demoFile, profileFiles = [], customCommands = [];
 let xray = true, lastState = {}, lastPoll = 0, loadedResources = new Set(), pendingFailure = false;
 let reportedProfile = false;
+const endTracker = new PlaybackEndTracker();
 let currentLibraryId = null, pendingResume = 0, lastPositionSave = 0;
 const demoLibrary = createLibraryUI(openDemo);
 const originalHudFiles = new Map();
@@ -135,6 +137,8 @@ async function openDemo(file, options = {}) {
   if (file.size > 256 * 1024**2) return error('The demo exceeds 256 MB.');
   if (file.size < 12) return error('The demo file is empty or corrupt.');
   $('message').hidden = true; pendingFailure = false;
+  endTracker.reset(); lastState = {};
+  $('demo-ended').hidden = true; $('screen').classList.remove('demo-ended');
   $('empty').hidden = true; controls.forEach(id => $(id).disabled = true);
   $('filename').textContent = file.name;
   demoFile = file;
@@ -154,7 +158,7 @@ async function openDemo(file, options = {}) {
       await new Promise(resolve => setTimeout(resolve, 150));
       writeFile(engine, `/baseq3/demos/${filename}`, bytes);
       mountCustom(engine);
-      engine.ccall('arena_command', null, ['string'], [`exec visitor-profile.cfg\ndemo ${filename}`]);
+      engine.ccall('arena_command', null, ['string'], [`set cl_freezeDemo 0\nset timescale 1\nexec visitor-profile.cfg\ndemo ${filename}`]);
     } else {
       const manifest = await request(`${BASE}/api/manifest`);
       if (!manifest.engineReady) throw new Error('The browser player build is not installed on the server yet.');
@@ -272,7 +276,15 @@ async function importHud(files) {
   } finally { $('hud').value = ''; }
 }
 
-for (const id of ['demo','demo-next']) $(id).addEventListener('change', event => openDemo(event.target.files[0]));
+for (const id of ['demo','demo-next','demo-ended-file']) $(id).addEventListener('change', event => {
+  const file=event.target.files[0]; event.target.value=''; openDemo(file);
+});
+$('demo-replay').addEventListener('click',()=>{
+  if (demoFile) openDemo(demoFile,{libraryId:currentLibraryId,resumeMs:0});
+});
+$('demo-ended-library').addEventListener('click',()=>{
+  if ($('library-panel').hidden) $('library-toggle').click();
+});
 $('screen').addEventListener('dragover', event => { event.preventDefault(); $('screen').classList.add('drag'); });
 $('screen').addEventListener('dragleave', () => $('screen').classList.remove('drag'));
 $('screen').addEventListener('drop', event => { event.preventDefault(); $('screen').classList.remove('drag'); openDemo(event.dataTransfer.files[0]); });
@@ -404,12 +416,29 @@ window.addEventListener('keydown', event => {
   if (!actions[key]) return;
   event.preventDefault(); event.stopImmediatePropagation(); actions[key]();
 }, true);
+function showDemoEnd(result) {
+  $('loading').hidden=true; $('empty').hidden=true; $('audio-unlock').hidden=true;
+  $('settings').hidden=true; $('screen').classList.remove('settings-open','idle');
+  $('settings-toggle').setAttribute('aria-expanded','false');
+  $('demo-ended-title').textContent=result.completed ? 'Demo finished' : 'Playback stopped';
+  $('demo-ended-name').textContent=demoFile?.name || '';
+  $('demo-ended').hidden=false; $('screen').classList.add('demo-ended');
+  controls.forEach(id=>$(id).disabled=true);
+  if (result.completed) {
+    $('seek').value='1000';
+    $('time').textContent=`${clock(result.duration)} / ${clock(result.duration)}`;
+    if (currentLibraryId) demoLibrary.position(currentLibraryId,0);
+  }
+  showControls(); $('demo-replay').focus({preventScroll:true});
+}
 const clock = ms => { const s = Math.max(0,Math.floor(ms/1000)); return `${Math.floor(s/60).toString().padStart(2,'0')}:${(s%60).toString().padStart(2,'0')}`; };
 setInterval(() => {
   if (!engine || starting || busy || pendingFailure) return;
   try {
     const state = JSON.parse(engine.ccall('arena_state', 'string', [], []));
+    const ended=endTracker.observe(state);
     lastState = state;
+    if (ended) {showDemoEnd(ended);return;}
     updateAudioState();
     if (state.active && pendingResume > 0) {
       const offset = Math.min(pendingResume, Math.max(0,state.end-state.start-1000));

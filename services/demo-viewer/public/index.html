@@ -21,6 +21,15 @@
           <label class="primary">Choose demo <span>↗</span><input id="demo" type="file" accept=".dm_68,.dm_73,.dm_90,.dm_91" hidden></label>
           <small>.dm_68 / .dm_73 / .dm_90 / .dm_91</small>
         </div>
+        <section id="demo-ended" class="demo-ended-panel" aria-label="Playback finished" hidden>
+          <h2 id="demo-ended-title">Demo finished</h2>
+          <p id="demo-ended-name"></p>
+          <div class="demo-ended-actions">
+            <button id="demo-replay" class="primary">Watch again ↻</button>
+            <label class="secondary">Open another demo ↑<input id="demo-ended-file" type="file" accept=".dm_68,.dm_73,.dm_90,.dm_91" hidden></label>
+          </div>
+          <button id="demo-ended-library" class="text-button">Open library</button>
+        </section>
         <div class="loading" id="loading" hidden><div class="demo-load-summary"><span>YOUR DEMO FILE</span><strong id="demo-load-size"></strong></div><span class="spinner"></span><p id="status" role="status">Preparing player</p><p id="asset-progress" class="asset-progress"></p><progress id="progress" max="100" aria-label="Game resources"></progress><small id="loading-note"></small></div>
         <button id="audio-unlock" class="audio-unlock" hidden>Tap to enable sound</button>
         <div class="seek-feedback" id="seek-feedback" aria-live="polite" hidden></div>
