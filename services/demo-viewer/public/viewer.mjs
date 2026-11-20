@@ -302,7 +302,12 @@ function updateAudioState() {
 }
 const audio=createAudioUnlock({getEngine:()=>engine,onState:()=>updateAudioState()});
 // Do not await unlock before requesting fullscreen: Safari needs the original gesture.
-$('screen').addEventListener('pointerdown',()=>{audio.unlock().catch(log);},{capture:true});
+$('screen').addEventListener('pointerdown',event=>{
+  // The sound button decides between unlock and mute on click; do not change
+  // its state in pointerdown first, or the first tap could immediately mute.
+  if (event.target?.closest?.('#sound-toggle, #audio-unlock')) return;
+  audio.unlock().catch(log);
+},{capture:true});
 $('audio-unlock').addEventListener('click',()=>{audio.unlock().catch(log);});
 $('sound-toggle').addEventListener('click',()=>{
   if (audio.state()!=='running') {audio.unlock().catch(log);return;}
