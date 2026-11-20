@@ -9,6 +9,7 @@ import Championship from "./pages/Championship";
 import Announce from "./pages/Announce";
 import Verified from "./pages/Verified";
 import Trainer from "./pages/Trainer";
+import DemoViewer from "./pages/DemoViewer";
 import Spawns from "./pages/Spawns";
 import RespawnLab from "./pages/RespawnLab";
 import HudEditor from "./pages/HudEditor";
@@ -39,6 +40,7 @@ const App: FC = () => {
               <Route path="/player/:nick" element={<Player />} />
               <Route path="/verified" element={<Verified />} />
               <Route path="/skill/trainer" element={<Trainer />} />
+              <Route path="/skill/demos" element={<DemoViewer />} />
               <Route path="/skill/respawns" element={<Spawns />} />
               <Route path="/skill/respawn-lab" element={<RespawnLab />} />
               {/* скрытая тестовая страница (WIP), не в навигации/пререндере */}
