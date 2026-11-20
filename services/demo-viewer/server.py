@@ -297,6 +297,11 @@ class Library:
 class Handler(BaseHTTPRequestHandler):
     library: Library
 
+    def end_headers(self):
+        # Playback uses audio output only; deny recording even if engine code regresses.
+        self.send_header('Permissions-Policy', 'microphone=(), camera=()')
+        super().end_headers()
+
     def json(self, value, status=200):
         body = json.dumps(value, ensure_ascii=False).encode()
         self.send_response(status)

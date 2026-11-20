@@ -112,7 +112,8 @@ function command(text) {
 }
 function profileCommand() {
   return ['exec default.cfg', 'exec arena-viewer.cfg', ...customCommands.map(c => `seta ${c.name} "${c.value}"`),
-    `set cg_wh ${xray ? 4 : 0}`, 'set cg_fxThreads 0', 'set cg_freecam 0'].join('\n');
+    `set cg_wh ${xray ? 4 : 0}`, 'set cg_fxThreads 0', 'set cg_freecam 0',
+    'set s_sdlCapture 0', 'set s_alCapture 0', 'set cl_voip 0'].join('\n');
 }
 function mountCustom(module) {
   for (const [name, data] of profileFiles) {
@@ -168,6 +169,8 @@ async function openDemo(file, options = {}) {
         arguments: ['+set','fs_basepath','/','+set','fs_homepath','/',
           '+set','fs_homestatepath','/','+set','com_basegame','baseq3',
           '+set','net_enabled','0','+set','sv_pure','0',
+          // Demo playback never needs an input device. Set before sound initialization.
+          '+set','s_sdlCapture','0','+set','s_alCapture','0','+set','cl_voip','0',
           '+set','com_hunkMegs','512','+set','com_zoneMegs','128',
           '+set','r_mode','-1','+set','r_customwidth','1280','+set','r_customheight','720',
           '+set','r_fullscreen','0','+set','cl_downloadWorkshops','0',

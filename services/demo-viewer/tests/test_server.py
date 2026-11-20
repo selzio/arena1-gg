@@ -10,7 +10,7 @@ from unittest.mock import patch
 from zipfile import ZipFile
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from server import Library, valid_map, safe_member
+from server import Handler, Library, valid_map, safe_member
 
 
 def package(name='testmap', corrupt=False, image_ext='.tga'):
@@ -129,3 +129,27 @@ class ResourcesTest(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class PlaybackPermissionsTest(unittest.TestCase):
+    def response(self, file=None):
+        handler = Handler.__new__(Handler)
+        handler.wfile = io.BytesIO()
+        handler.request_version = 'HTTP/1.1'
+        handler.requestline = 'GET /demo-viewer/ HTTP/1.1'
+        handler.path = '/demo-viewer/'
+        handler.log_request = lambda *args: None
+        if file:
+            handler.file(file)
+        else:
+            handler.json({'message': 'Not found'}, 404)
+        return handler.wfile.getvalue().split(b'\r\n\r\n', 1)
+
+    def test_recording_is_denied_on_player_and_api_responses(self):
+        with tempfile.TemporaryDirectory() as folder:
+            page = Path(folder)/'index.html'
+            page.write_text('<p>Player</p>')
+            for file in (None, page):
+                headers, body = self.response(file)
+                self.assertIn(b'Permissions-Policy: microphone=(), camera=()', headers)
+                self.assertTrue(body)
