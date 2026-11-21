@@ -42,13 +42,22 @@
             <button id="xray" class="xray-button on" role="switch" aria-checked="true" aria-label="X-Ray" title="Enemy outlines through walls">X-RAY</button>
             <select id="speed" aria-label="Playback speed" title="Playback speed" disabled><option value="0.25">0.25×</option><option value="0.5">0.5×</option><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option><option value="2">2×</option><option value="4">4×</option></select>
             <div class="volume"><button id="sound-toggle" class="icon" aria-label="Enable sound" title="Enable sound"><svg class="volume-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M11 5 6 9H3v6h3l5 4V5Z" fill="currentColor"/><path d="M15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><input id="volume" type="range" min="0" max="100" value="60" aria-label="Volume" disabled></div>
-            <button id="settings-toggle" class="icon" aria-label="HUD and cfg settings" aria-expanded="false" title="HUD and cfg">⚙</button>
+            <button id="settings-toggle" class="icon" aria-label="Player settings" aria-expanded="false" title="Player settings">⚙</button>
             <button id="fullscreen" class="icon" aria-label="Fullscreen" title="Fullscreen (F)">⛶</button>
           </div>
         </div>
         <section class="settings settings-popup" id="settings" aria-label="Player settings" hidden>
           <div class="setting"><div class="section-title"><span>PLAYER SETTINGS</span><button id="settings-close" class="icon" aria-label="Close settings">×</button></div>
             <label class="brightness-setting" for="brightness">Brightness <output id="brightness-value">135%</output></label><input id="brightness" type="range" min="80" max="200" value="135" aria-label="Brightness">
+            <label class="brightness-setting" for="fov">FOV <input id="fov-number" type="number" min="60" max="160" step="1" value="105" inputmode="numeric" aria-label="FOV value"></label>
+            <input id="fov" type="range" min="60" max="160" step="1" value="105" aria-label="FOV">
+            <label class="brightness-setting" for="picmip">Texture detail · picmip <output id="picmip-value">1</output></label>
+            <input id="picmip" type="range" min="0" max="6" step="1" value="1" aria-label="Picmip">
+            <p class="visual-hint">0 · detailed — 6 · smooth</p>
+            <label class="brightness-setting" for="player-models">Player models</label>
+            <select id="player-models"><option value="uniform">Uniform · Keel bright</option><option value="original">Original player models</option></select>
+            <label class="vertex-setting"><input id="vertex-light" type="checkbox"> Vertex lighting</label>
+            <button id="apply-visuals" class="text-button">Apply</button>
             <div class="profile"><div class="profile-icon">▦</div><div><strong id="profile-name">Default</strong><p id="profile-description">Quake Live · stock HUD</p></div><span id="profile-badge">ACTIVE</span></div>
             <label class="secondary">Import your profile <span>↑</span><input id="hud" type="file" accept=".cfg,.menu,.zip,.ttf,.otf,.tga,.jpg,.png,.h" multiple hidden></label>
             <p class="hint">CFG, MENU or ZIP. The default profile is used unless you import your own.</p>

@@ -3,6 +3,7 @@ import { unzipSync } from './vendor/fflate.mjs';
 import { ResourceCache } from './resource-cache.mjs';
 import { createLibraryUI } from './library-ui.mjs';
 import { PlaybackEndTracker } from './playback-end.mjs';
+import { visualSettings, visualCommands, fovCommands } from './visual-settings.mjs';
 import { createAudioUnlock, createFullscreen, brightnessValue } from './player-platform.mjs';
 
 const $ = id => document.getElementById(id);
@@ -15,6 +16,9 @@ let engine, starting = false, busy = false, demoFile, profileFiles = [], customC
 let xray = true, lastState = {}, lastPoll = 0, loadedResources = new Set(), pendingFailure = false;
 let reportedProfile = false;
 const endTracker = new PlaybackEndTracker();
+let savedVisuals = {};
+try {savedVisuals = JSON.parse(localStorage.getItem('arena1-visual-settings') || '{}') || {};} catch {}
+let visuals = visualSettings(savedVisuals), visualRestart = 0;
 let currentLibraryId = null, pendingResume = 0, lastPositionSave = 0;
 const demoLibrary = createLibraryUI(openDemo);
 const originalHudFiles = new Map();
@@ -112,7 +116,7 @@ function profileCommand() {
   return ['exec default.cfg', 'exec arena-viewer.cfg', ...customCommands.map(c => `seta ${c.name} "${c.value}"`),
     `set cg_wh ${xray ? 4 : 0}`, 'set cg_fxThreads 0', 'set cg_freecam 0',
     'set s_sdlCapture 0', 'set s_alCapture 0', 'set cl_voip 0',
-    'set s_mixahead 0.25', 'set s_mixPreStep 0.05', 'set s_useTimescale 0', 'set s_forceScale 0', 'set com_maxfps 60'].join('\n');
+    'set s_mixahead 0.25', 'set s_mixPreStep 0.05', 'set s_useTimescale 0', 'set s_forceScale 0', 'set com_maxfps 60', visualCommands(visuals)].join('\n');
 }
 function mountCustom(module) {
   for (const [name, data] of profileFiles) {
@@ -137,7 +141,7 @@ async function openDemo(file, options = {}) {
   if (file.size > 256 * 1024**2) return error('The demo exceeds 256 MB.');
   if (file.size < 12) return error('The demo file is empty or corrupt.');
   $('message').hidden = true; pendingFailure = false;
-  endTracker.reset(); lastState = {};
+  endTracker.reset(); lastState = {}; visualRestart=0;
   $('demo-ended').hidden = true; $('screen').classList.remove('demo-ended');
   $('empty').hidden = true; controls.forEach(id => $(id).disabled = true);
   $('filename').textContent = file.name;
@@ -171,6 +175,7 @@ async function openDemo(file, options = {}) {
           // Give Safari's main-thread SDL audio callback more headroom during effects.
           '+set','s_sdlDevSamps','4096',
           '+set','com_hunkMegs','512','+set','com_zoneMegs','128',
+          '+set','r_picmip',String(visuals.picmip),'+set','r_vertexLight',visuals.vertexLight ? '1' : '0',
           '+set','r_mode','-1','+set','r_customwidth','1280','+set','r_customheight','720',
           '+set','r_fullscreen','0','+set','cl_downloadWorkshops','0',
           '+exec','visitor-profile.cfg','+demo',filename],
@@ -344,6 +349,41 @@ $('brightness').addEventListener('input',event=>{
   applyBrightness(event.target.value);
   try {localStorage.setItem('arena1-brightness',String(brightnessValue(event.target.value)));} catch {}
 });
+$('picmip').value=String(visuals.picmip);
+$('picmip-value').textContent=String(visuals.picmip);
+$('player-models').value=visuals.models;
+$('vertex-light').checked=visuals.vertexLight;
+$('fov').value=$('fov-number').value=String(visuals.fov);
+function saveVisuals() {
+  try {localStorage.setItem('arena1-visual-settings',JSON.stringify(visuals));} catch {}
+  if (engine) writeFile(engine,'/baseq3/visitor-profile.cfg',new TextEncoder().encode(profileCommand()));
+}
+function updateFov(value) {
+  if (!starting && !busy && !visualRestart) {
+    visuals=visualSettings({...visuals,fov:value});saveVisuals();command(fovCommands(visuals));
+  }
+  $('fov').value=$('fov-number').value=String(visuals.fov);
+}
+$('fov').addEventListener('input',event=>updateFov(event.target.value));
+$('fov-number').addEventListener('change',event=>updateFov(event.target.value));
+$('fov-number').addEventListener('keydown',event=>{if(event.key==='Enter') {event.preventDefault();updateFov(event.target.value);}});
+$('picmip').addEventListener('input',event=>{$('picmip-value').textContent=event.target.value;});
+$('apply-visuals').addEventListener('click',()=>{
+  if (starting || busy || visualRestart) return;
+  const next=visualSettings({picmip:$('picmip').value,models:$('player-models').value,fov:$('fov-number').value,vertexLight:$('vertex-light').checked});
+  if (JSON.stringify(next)===JSON.stringify(visuals)) return;
+  const restart=next.picmip!==visuals.picmip || next.vertexLight!==visuals.vertexLight || next.models!==visuals.models;
+  visuals=next;
+  $('fov').value=$('fov-number').value=String(visuals.fov);saveVisuals();
+  if (!engine) return;
+  if (!restart) {command(fovCommands(visuals));return;}
+  // picmip is latched: re-register textures and models at the current demo position.
+  if (lastState.active) {
+    visualRestart=Date.now();endTracker.reset();status('Loading');
+    controls.forEach(id=>$(id).disabled=true);$('apply-visuals').disabled=true;
+  }
+  engine.ccall('arena_command',null,['string'],[visualCommands(visuals)+'\nvid_restart']);
+});
 function seek(ms) {
   const target = Math.max(lastState.start, Math.min(ms, lastState.end - 1));
   command(`seek ${(target - lastState.start) / 1000}`);
@@ -435,9 +475,17 @@ function showDemoEnd(result) {
 }
 const clock = ms => { const s = Math.max(0,Math.floor(ms/1000)); return `${Math.floor(s/60).toString().padStart(2,'0')}:${(s%60).toString().padStart(2,'0')}`; };
 setInterval(() => {
+  $('apply-visuals').disabled=starting || busy || Boolean(visualRestart);
   if (!engine || starting || busy || pendingFailure) return;
   try {
     const state = JSON.parse(engine.ccall('arena_state', 'string', [], []));
+    if (visualRestart) {
+      if (!state.active) {
+        if (Date.now()-visualRestart>30000) {visualRestart=0;error('Could not apply player settings. Open the demo again.');}
+        return;
+      }
+      visualRestart=0;$('apply-visuals').disabled=false;
+    }
     const ended=endTracker.observe(state);
     lastState = state;
     if (ended) {showDemoEnd(ended);return;}
